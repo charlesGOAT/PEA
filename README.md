@@ -27,3 +27,6 @@ PEA(1).docx
 
 First Programming Assignment of the second semester
 cgauthier_G20_A01_ContactList.zip
+
+Math for computer science lab
+Lab_3_KPI_Data_2020_F.xlsx
