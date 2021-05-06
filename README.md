@@ -22,7 +22,7 @@ cgauthier_K10_A04_Presentation.pptx
 My Final Web assignment in Web 1 in which we had to create a website
 cgauthier_H10A03Web.zip
 
-A Paper I had to write explaining a mathematical concept we learned in Math for computer science
+A Paper I wrote explaining a mathematical concept we learned in Math for computer science
 PEA(1).docx
 
 First Programming Assignment of the second semester
