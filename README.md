@@ -16,7 +16,8 @@ In this Repository, you will find my most important assignments in year one of m
 These documents include:
 
 My Final Buisness assignment in which I did a formal report on a company of our choice
-cgauthier_K10_A04_Report.docx
+
+[cgauthier_K10_A04_Report.docx](https://github.com/charlesGOAT/PEA/blob/main/cgauthier_K10_A04_Report.docx)
 
 [cgauthier_K10_A04_Presentation.pptx](https://github.com/charlesGOAT/PEA/blob/main/cgauthier_K10_A04_Presentation.pptx)
 
