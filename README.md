@@ -2,8 +2,8 @@
 Contact Information:<br/>
 - Email: charles-etienne.gauthier@outlook.com<br/>
 - Phone Number: 819-772-9941<br/>
-<h3>Courses</h3>
-<h4>First Year Cours:</h4><br/>
+<h3>Courses 🧑‍🎓</h3>
+First Year Cours:<br/>
 - Programming 1 G10 (Java)<br/>
 - Programming 2 G20 (Java)<br/>
 - Web Programming 1 H10 (HTML,CSS)<br/>
@@ -13,7 +13,7 @@ Contact Information:<br/>
 - Buisness In The Workplace K10<br/>
 - Math For Computer Science<br/>
 
-<h4>Second Year Courses:</h4><br/>
+Second Year Courses:<br/>
 - Programming 3 (Java) G30
 - Web Programming 3 (Javasript, react, nodeJS) H30
 - Web Programming 4 (PHP) H40
