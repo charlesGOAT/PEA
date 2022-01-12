@@ -29,7 +29,7 @@ A Paper I wrote explaining a mathematical concept we learned in Math for compute
 [PEA(1).docx](https://github.com/charlesGOAT/PEA/blob/main/PEA%20(1).docx)
 
 First Programming Assignment of the second semester<br/>
-cgauthier_G20_A01_ContactList.zip
+[cgauthier_G20_A01_ContactList.zip](https://github.com/charlesGOAT/PEA/blob/main/cgauthier_G20_A01_ContactList.zip)
 
 Math for computer science lab<br/>
 Lab_3_KPI_Data_2020_F.xlsx
