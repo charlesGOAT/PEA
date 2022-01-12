@@ -3,6 +3,7 @@ Contact Information:<br/>
 - Email: charles-etienne.gauthier@outlook.com<br/>
 - Phone Number: 819-772-9941<br/>
 <h3>Courses 🧑‍🎓</h3>
+
 First Year Cours:<br/>
 - Programming 1 G10 (Java)<br/>
 - Programming 2 G20 (Java)<br/>
