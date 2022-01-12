@@ -3,7 +3,7 @@ Contact Information:<br/>
 - Email: charles-etienne.gauthier@outlook.com<br/>
 - Phone Number: 819-772-9941<br/>
 
-Courses:<br/><br/>
+Courses:<br/>
 - Programming 1 G10<br/>
 - Programming 2 G20<br/>
 - Web Programming 1 H10<br/>
