@@ -26,7 +26,7 @@ My Final Web assignment in Web 1 in which we had to create a website<br/>
 [cgauthier_H10A03Web.zip](https://github.com/charlesGOAT/PEA/blob/main/cgauthier_H10A03Web.zip)
 
 A Paper I wrote explaining a mathematical concept we learned in Math for computer science<br/>
-PEA(1).docx
+[PEA(1).docx](https://github.com/charlesGOAT/PEA/blob/main/PEA%20(1).docx)
 
 First Programming Assignment of the second semester<br/>
 cgauthier_G20_A01_ContactList.zip
