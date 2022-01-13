@@ -36,13 +36,11 @@ I also like working out, but since covid, could not really got to the gym unfort
 On the flip-side, the pandemic gave me the time to make my own video games using unity.
 
 Since I started programming last year, I have always enjoyed it (especially C#) and look forward to making it a career.<br/>
-In this repository, you will find two folders: the first folder contains some important milestones and projects I had to do during my first year at heritage.
+In this repository, you will find two folders: the first folder contains some important milestones and projects I had to do during my first year at heritage. The other contains projects from my second year
 
-![PEA-FirstYear](Images/folder-invoices.png)
+First year projects: ![PEA-FirstYear](Images/folder-invoices.png)
 
- The second folder contains projects from my second year in computer sciences.
-
-![PEA-Second-Year](Images/folder-invoices.png)
+Second year projects: ![Images/folder-invoices.png](PEA-Second-Year)
 
 
 
