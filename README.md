@@ -27,6 +27,7 @@ Second Year Courses:<br/>
 <h4>About me👋</h4>
 Hello! My name is Charles-Etienne, I am currently a second year student at Heritage College in computer science and welcome to my repository. <br/>
 Hobbies include, but are not limited to:<br/>
+
 - Reading📘
 - Sports🏅
 - Hanging out with friends🧑‍🤝‍🧑
