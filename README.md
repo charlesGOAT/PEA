@@ -38,9 +38,9 @@ On the flip-side, the pandemic gave me the time to make my own video games using
 Since I started programming last year, I have always enjoyed it (especially C#) and look forward to making it a career.<br/>
 In this repository, you will find two folders: the first folder contains some important milestones and projects I had to do during my first year at heritage. The other contains projects from my second year
 
-First year projects: <a href="PEA-FirstYear"><img src="Images/folder-invoices.png"></a>
+First year projects:<br/> <a href="PEA-FirstYear"><img src="Images/folder-invoices.png"></a>
 
-Second year projects: <a href="PEA-SecondYear"><img src="Images/folder-invoices.png"></a>
+Second year projects:<br/> <a href="PEA-SecondYear"><img src="Images/folder-invoices.png"></a>
 
 
 
