@@ -24,6 +24,22 @@ Second Year Courses:<br/>
 - Systems K20
 - Ethics at the workplace 
 
-In this Repository, you will find my most important assignments in year one of my computer science program journey.
-It contains two folders, one for my first year of compsci and projects we had to choose and the second, projects of my second year at heritage.
+<h4>About me👋</h4>
+Hello! My name is Charles-Etienne, I am currently a second year student at Heritage College in computer science and welcome to my repository. <br/>
+Hobbies include, but are not limited to:
+- Reading📘
+- Sports🏅
+- Hanging out with friends🧑‍🤝‍🧑
 
+I also like working out, but since covid, could not really got to the gym unfortunatly. 
+
+In terms of knowledge on computer sciences, I am proficient in
+- Java ![java (1)]
+- C#
+- HTML
+- CSS
+- Javascript
+- Node Js
+- React
+- PHP
+- SQL
