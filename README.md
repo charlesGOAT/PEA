@@ -35,7 +35,7 @@ I also like working out, but since covid, could not really got to the gym unfort
 
 In terms of knowledge on computer sciences, I am proficient in
 - Java ![](Images/java (1).png)
-- C#
+- C# 
 - HTML
 - CSS
 - Javascript
