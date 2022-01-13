@@ -1,7 +1,8 @@
 # PEA
 Contact Information:<br/>
-- Email: charles-etienne.gauthier@outlook.com<br/>
-- Phone Number: 819-772-9941<br/>
+- Email✉️: charles-etienne.gauthier@outlook.com<br/>
+- Phone Number☎️: 819-772-9941<br/>
+<h3>Courses 🧑‍🎓</h3>
 
 First Year Courses:<br/>
 - Programming 1 G10 (Java)<br/>
