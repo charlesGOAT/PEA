@@ -40,7 +40,7 @@ In this repository, you will find two folders: the first folder contains some im
 
 First year projects: ![PEA-FirstYear](Images/folder-invoices.png)
 
-Second year projects: ![Images/folder-invoices.png](PEA-Second-Year)
+Second year projects: ![Images/folder-invoices.png](PEA-SecondYear)
 
 
 
