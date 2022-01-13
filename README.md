@@ -16,7 +16,7 @@ First Year Courses:<br/>
 
 Second Year Courses:<br/>
 - Programming 3 (Java ![](Images/java.png)) G30
-- Web Programming 3 (Javasript ![](Images/js-file.png), react ![](Images/react.png), nodeJS![](Images/nodejs.png) H30
+- Web Programming 3 (Javasript ![](Images/js-file.png), react ![](Images/react.png), nodeJS![](Images/nodejs.png)) H30
 - Web Programming 4 (PHP ![](Images/php.png)) H40
 - Web Programming 5 (C# ![](Images/c-sharp.png)) H50
 - Database 1 J10 (SQL ![](Images/sql-server.png))
