@@ -34,7 +34,7 @@ Hobbies include, but are not limited to:
 I also like working out, but since covid, could not really got to the gym unfortunatly. 
 
 In terms of knowledge on computer sciences, I am proficient in
-- Java ![java (1)](https://user-images.githubusercontent.com/75446757/149243229-f3634ce8-4650-45ee-8cd0-003dacf96ae6.png)
+- Java ![](Images/java (1).png)
 - C#
 - HTML
 - CSS
