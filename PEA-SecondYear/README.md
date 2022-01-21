@@ -1,7 +1,7 @@
 # PEA-SecondYear
 In this folder, I put in my best work from year one of my computer science journey in Heritage college, and also essays I did describing what I've learned this year.
 
-Assignments: 
+<h3>Assignments:</h3> 
 
 - My Second web 3 assignment (sockets)<br/>
 - My Third web 3 assignment (React.js and express)<br/>
