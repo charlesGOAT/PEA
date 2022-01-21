@@ -1,5 +1,5 @@
 # PEA
-<h3>Contact Information:</h3><br/>
+<h3>Contact Information:</h3>
 - Email ✉️: charles-etienne.gauthier@outlook.com<br/>
 - Phone Number ☎️: 819-772-9941<br/>
 <h3>Courses 🧑‍🎓</h3>
