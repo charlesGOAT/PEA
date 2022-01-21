@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Dog to Service" directorySegmentName="seg_0" id="9570F7FA-0321-452E-61A7-45D9D982DD52">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:28:52 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Gets</nameOnSource>
+<nameOnTarget> Is provided to</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>268AB4B2-A4C4-A531-C7B6-4842BAA8CC7D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>61275001-ABA9-BB9F-A92B-462354FE1D44</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

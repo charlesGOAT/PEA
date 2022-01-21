@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Customer To Pet" directorySegmentName="seg_0" id="410D89BB-0CFB-BA1E-F5D1-426C0170F2FF">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:27:22 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Has</nameOnSource>
+<nameOnTarget>Is owned by </nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8B8FA7EA-F1D8-4EB6-221A-FE86B740D994</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BF18E87C-2B29-0405-025D-323387F73DDE</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

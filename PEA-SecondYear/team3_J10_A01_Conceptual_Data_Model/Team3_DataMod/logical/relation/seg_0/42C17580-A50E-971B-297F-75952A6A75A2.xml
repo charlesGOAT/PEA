@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Cat to Suite" directorySegmentName="seg_0" id="42C17580-A50E-971B-297F-75952A6A75A2">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:28:39 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Is appointed to</nameOnSource>
+<nameOnTarget>Is reserved by</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4A38B137-739F-CD4B-D24A-E2C69EEF489E</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>34E9BB50-E540-5873-2FB7-6636FD463AC8</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

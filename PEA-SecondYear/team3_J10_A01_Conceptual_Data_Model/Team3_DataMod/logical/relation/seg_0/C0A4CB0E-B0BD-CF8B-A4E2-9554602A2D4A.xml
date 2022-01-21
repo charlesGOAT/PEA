@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Cat to Services" directorySegmentName="seg_0" id="C0A4CB0E-B0BD-CF8B-A4E2-9554602A2D4A">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:29:01 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Gets</nameOnSource>
+<nameOnTarget> Are provided to </nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4A38B137-739F-CD4B-D24A-E2C69EEF489E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>61275001-ABA9-BB9F-A92B-462354FE1D44</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

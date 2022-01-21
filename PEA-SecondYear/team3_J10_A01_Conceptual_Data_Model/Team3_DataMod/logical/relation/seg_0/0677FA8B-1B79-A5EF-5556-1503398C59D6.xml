@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Pet to Cat" directorySegmentName="seg_0" id="0677FA8B-1B79-A5EF-5556-1503398C59D6">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:27:47 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>is</nameOnSource>
+<nameOnTarget>is a</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>BF18E87C-2B29-0405-025D-323387F73DDE</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>4A38B137-739F-CD4B-D24A-E2C69EEF489E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

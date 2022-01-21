@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Dog to rates" directorySegmentName="seg_0" id="E08C276A-21BB-2AF5-0518-6C93C9D58B98">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:41:12 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Has</nameOnSource>
+<nameOnTarget>Correlates to</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>268AB4B2-A4C4-A531-C7B6-4842BAA8CC7D</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>52F4094B-ED32-6426-63D6-761CCB2BDAFD</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

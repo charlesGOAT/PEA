@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Cat to Rates" directorySegmentName="seg_0" id="53C38DCD-7594-3593-0D24-73B0443B78EA">
+<createdBy>2034907</createdBy>
+<createdTime>2021-09-14 18:41:37 UTC</createdTime>
+<ownerDesignName>Team3_DataMod</ownerDesignName>
+<engineerTo>
+<item key="22545C5D-C15F-FE8F-5B57-029986213732" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Has</nameOnSource>
+<nameOnTarget>Correlates to</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>34E9BB50-E540-5873-2FB7-6636FD463AC8</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>ED051253-9E2F-D1BE-1706-2997760FFA27</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
