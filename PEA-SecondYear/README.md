@@ -3,4 +3,12 @@ In this folder, I put in my best work from year one of my computer science journ
 
 Assignments: 
 
-- My Final Buisness assignment in which I did a formal report on a company of our choice<br/>
+- My Second web 3 assignment (sockets)<br/>
+- My Third web 3 assignment (React.js and express)<br/>
+- My Second Programming assignment (Hangman game)<br/>
+- Database 1 assignment (Data model)<br/>
+- Systems Analysis assignment 1<br/>
+- Systemn Analysis assignment 4<br/>
+- Co-op Work term report<br/>
+
+
