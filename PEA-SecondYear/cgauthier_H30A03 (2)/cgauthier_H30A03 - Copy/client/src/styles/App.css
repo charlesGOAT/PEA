@@ -1,0 +1,261 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #747474;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(63, 63, 63);
+}
+
+* {
+  font-family: "Gill Sans", sans-serif;
+}
+body {
+  background-image: linear-gradient(#1a1a1a, #1a1a1a, #7a7a7a);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: rgb(255, 255, 255);
+}
+
+#gridForm{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 3% ;
+}
+
+label{
+  font-size:1rem;
+  color: rgb(230, 195, 0);
+  text-shadow: 5px 5px 5px #000000;
+  margin-bottom: 3%;
+}
+label div,#errYearS,#errActorSelect{
+  margin-top: 1%;
+  font-size: 10px;
+  color: rgb(151, 0, 0);
+  text-shadow: 5px 5px 5px #000000;
+}
+
+#listAll{
+  font-size: 33px;
+  color: rgb(230, 195, 0);
+  text-shadow: 5px 5px 5px #000000;
+}
+
+/* #myForm{
+  margin-top: 5%;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+border: 3px solid rgb(216, 184, 0);
+
+} */
+
+#addAMovie{
+  font-size: 26px;
+  color: rgb(230, 195, 0);
+  text-shadow: 5px 5px 5px #000000;
+}
+
+section {
+   background-image: url(./pics/moviePics.jpg);
+   background-repeat: no-repeat;
+background-size: 100% 100%;
+   width: 100%;
+}
+#successfullyAdded{
+  margin-top: 1%;
+  color: #096b00;
+  text-shadow: 5px 5px 5px #000000;
+}
+#movieGrid {
+  width: 100%;
+  display: grid;
+  column-gap: 2%;
+  row-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 1%;
+}
+
+.movieCells {
+  border-radius: 10px;
+  border: 3px solid rgb(216, 184, 0);
+  background-color: #333333;
+  padding: 15px 5px 15px 5px;
+  min-width: 355px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.Title {
+  margin-left: 20px;
+  justify-content: center;
+  font-size: 35px;
+  text-shadow: 2px 2px 2px #000000;
+}
+#floatRight {
+  float: right;
+  padding-left: 5px;
+  margin-left: 10%;
+  border: solid 3px rgb(153, 153, 153);
+  border-width: 0px 0px 0px 3px;
+  padding-top: 0px;
+}
+
+
+
+.otherPhrase {
+  text-align: left;
+  font-size: 32px;
+}
+
+.wordInYellow {
+  font-size: 33px;
+  color: rgb(230, 195, 0);
+  text-shadow: 5px 5px 5px #000000;
+}
+
+#searchContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  float: right;
+  margin-right: 10%;
+  grid-gap: 5px;
+}
+
+.movieBtn {
+  
+  width: 85px;
+  height: 25px;
+  background-color: rgb(78, 78, 78);
+  color: white;
+  transition: ease-out 0.5s ;
+}
+
+.movieBtn:hover {
+  width: 85px;
+  height: 25px;
+  box-shadow: rgb(255, 217, 0) ;
+  color: rgb(0, 0, 0) ;
+}
+ul {
+  list-style: none;
+}
+
+#searchY,#searchG,#searchA,#searchT{
+   background-color: #282c34;
+  width: 100%;
+  height: 25px;
+}
+
+
+.searchMe{
+  background-color: rgb(78, 78, 78)!important;
+width: fit-content!important;
+transition: ease-out 0.5s!important;
+color: white;
+margin-left: 40%;
+}
+.searchMe:hover{
+  height: auto;
+  background-color: rgb(230, 195, 0)!important;
+  color: rgb(0, 0, 0) !important;
+}
+
+input[type='text']{
+  background-color: #282c34;
+  margin-right: 10px;
+  margin-top: 2%;
+  width: 70%;
+  height: 50%;
+  border-radius: 5px 15px 10px 30px;
+  padding-left: 15px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+input[type='submit'] {
+  background-color: rgb(78, 78, 78);
+  margin-top: 2%;
+  font-size: 15px;
+  width: 10%;
+  transition: ease-out 0.5s;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  border: 5px;
+  border-radius: 5px;
+}
+
+
+select {
+  cursor: pointer;
+  background-color: #282c34;
+  border-radius: 5px 5px 5px 5px;
+  color: rgb(230, 195, 0);
+}
+#inline{display: inline}
+
+button,input[type='button'] {
+  cursor: pointer;
+  width: fit-content;
+  margin-right: 1%;
+  background-color: rgb(78, 78, 78);
+  color: white;
+  transition: ease-out 0.5s;
+  border: 5px;
+  border-radius: 5px;
+}
+
+button:hover,input[type='button']:hover,input[type='submit']:hover{
+  cursor: pointer;
+  height: 5%;
+  background-color: rgb(230, 195, 0);
+  color: rgb(0, 0, 0);
+  
+}
+
+@media only screen and (min-width: 1400px) {
+  select {
+    background-color: #282c34;
+    border-radius: 5px 5px 5px 5px;
+    color: rgb(230, 195, 0);
+    font-size: 150%;
+  }
+
+  
+
+  
+  #movieGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+
+  p {
+    font-size: 33px;
+  }
+
+  .Title {
+    margin-left: 40px;
+    justify-content: center;
+    font-size: 45px;
+    text-shadow: 3px 3px 3px #000000;
+  }
+
+  .otherPhrase {
+    text-align: left;
+    font-size: 38px;
+  }
+
+  .wordInYellow {
+    font-size: 48px;
+    color: rgb(230, 195, 0);
+    text-shadow: 10px 10px 10px #000000;
+  }
+}
