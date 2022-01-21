@@ -1,0 +1,345 @@
+html{
+  font-family: sans-serif;
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  margin: 0;
+  height: 100%;
+  background-size: cover;
+}
+
+main {
+  display: grid;
+  grid-template-columns: auto auto auto;
+ margin-left: auto;
+ margin-right: auto;
+  width: fit-content;
+  transform: translateY(10%);
+}
+
+.displayNone {
+  display: none;
+}
+
+.inputImage{
+  
+  height: 70px;
+margin-left: 5px;
+margin-right: 5px;
+background-color:rgb(0, 153, 255);
+border-radius: 10px;
+padding: 5px;
+}
+
+
+
+.continueLeave{
+  height: 70px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color:rgb(0, 153, 255);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  justify-content: center;
+
+}
+
+.textBubble{
+  background-color: rgb(0, 153, 255);
+  border:3px solid ;
+  color: white;
+  border-radius: 15px 15px 15px;
+  padding: 5px;
+  width:fit-content;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+#users {
+  background-color: rgb(108, 182, 202);
+  color: white;
+  height: 800px;
+  width: 300px;
+  text-align: center;
+  font-size: 30px;
+  grid-area: 2 / 1;
+  text-decoration: underline;
+  border: 1px #000 solid;
+  /* box-shadow: inset 1px 1px 1px 3px rgb(1, 25, 44); */
+  padding-top: 10px;
+}
+
+#listOfCommands{
+  text-align: left;
+}
+
+ul{
+  list-style:none;
+}
+
+li{
+  text-decoration: none;
+  font-size: 17px;
+  margin-bottom: 15px;
+  
+}
+
+#allUsers{
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+#game {
+  position: relative;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  grid-area: 2/3;
+  background-color: white;
+  width: 400px;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: rgb(0, 119, 255);
+}
+
+.noDisplay {
+  animation-name: noDipsplayAnimation;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+}
+
+#sendMessages {
+  border: 3px solid rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  bottom: 0;
+  height: 40px;
+  position: absolute;
+}
+
+#sendMsg {
+  background-color: rgb(255, 255, 255);
+  height: 40px;
+  width: 60px;
+}
+
+#msgBox {
+  font-family: sans-serif;
+  resize: none;
+  background-color: rgb(241, 241, 241);
+  border: 2px rgb(0, 153, 255) solid;
+  height: 30px;
+  font-size: 25px;
+  width: 900px;
+}
+
+#title {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: rgb(0, 153, 255);
+  color: rgb(0, 0, 0);
+}
+
+#chat {
+  background-color: rgb(255, 255, 255);
+  width: 1000px;
+  height: 810px;
+  line-height: 3em;
+  border: thin #000 solid;
+  grid-area: 2/2;
+  position: relative;
+  overflow-x: hidden; 
+}
+
+#welcome{
+  grid-area: 1/1 /span 1 /span 3;
+  background-color:rgb(0, 116, 194);
+  border: 2px #000 solid;
+  padding: 30px;  
+  font-size: 25px;
+  color: white;
+}
+
+#mainChat {
+  padding: 10px;
+  padding-bottom: 60px;
+  overflow-y: auto;
+  max-height: 600px;
+  background-color: white;
+}
+
+#privateRoom{  padding: 10px;
+  padding-bottom: 60px;
+  overflow-y: auto;
+  max-height: 600px;
+  background-color: rgb(66, 66, 66);}
+
+.pre-game {
+  justify-content: center;
+  transform: translateY(30%);
+}
+
+h1 {
+  font-size: 60px;
+  color: rgb(0, 56, 240);
+  text-shadow: 20px 20px 20px 20px #000 ;
+  text-align: center;
+  animation-name: h1Animate;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+}
+
+#gameDiv {
+  position: absolute;
+  bottom: 20px;
+  border: 10px black, solid;
+  margin-left: 100px;
+  margin-right: 100px;
+  
+}
+
+#btnDiv{position: absolute;
+  bottom: 20px;
+  border: 10px black, solid;
+  margin-left: 100px;
+  margin-right: 100px;}
+
+.signIn {
+  text-decoration: underline;
+  text-decoration-color: rgb(0, 153, 255);
+  margin-bottom: 15%;
+  font-size: 35px;
+}
+
+#theButton {
+  background-color: rgb(0, 162, 255);
+  color: white;
+  box-shadow: 0px 5px 5px rgb(32, 12, 19);
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+#theButton:hover {
+  background-color: rgb(0, 99, 212);
+  box-shadow: 3px 10px 10px rgb(32, 12, 19);
+}
+
+footer {
+  margin-top: 60px;
+  padding: 25px;
+}
+
+#username {
+  width: 300px;
+  height: 35px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  border-color:rgb(0, 123, 238) ;
+}
+
+.addUser{
+justify-content: center;
+height: 100px;
+margin-bottom: 50px;
+}
+
+.theForm {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 20px 30px rgb(0, 0, 0);
+  width: 80%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 80px;
+  animation-name: formAnimate;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}
+
+.img1 {
+  animation-name: animation1;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+.img2 {
+  animation-name: animation2;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}
+
+.img3 {
+  animation-name: animation3;
+  animation-duration: 2.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes animation1 {
+  from {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(130px);
+  }
+}
+
+@keyframes animation2 {
+  from {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(100px);
+  }
+}
+
+@keyframes animation3 {
+  from {
+    opacity: 0;
+    transform: translateX(600px);
+    transform: translateY(300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(150px);
+    transform: translateY(70px);
+  }
+}
+
+@keyframes h1Animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes formAnimate {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes noDipsplayAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
