@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="./styles/chat.css" type="text/css" />
+  </head>
+  <body>
+     <div id="preGame" class="pre-game"> 
+    <h1>Charles' Chat and Game</h1> 
+    
+<div class="theForm">
+    <div class="connect">
+        <h2 class="signIn">Sign in</h2> 
+    <img class="addUser" src="./images/addUser.png" alt="Adding User image">
+     <form id="usernameForm">
+        <input type="text" id="username" placeholder="Username"/>
+        <br>
+    <input type="button" id="theButton" value="Log In">
+    <footer>
+        <hr>
+        <div class="errorDiv"></div>
+    </div>
+</div> 
+</div>  
+    
+
+    <main id="main" class="displayNone">
+      
+      <div id="welcome"><input type="image" id="avatar" alt="picture of avatar"/><div id="hi">Welcome</div></div>
+      <div id="users">
+        All Users:
+        <div id="allUsers"></div>
+        <div id="commands">
+          List of commands
+          <div id="listOfCommands:">
+            <ul>
+            <li>!invite (name) to invite in private room</li>
+            <li>!play (name) to invite to a game</li>
+            <li>!!play to invite everyone for a game</li>
+            <li>!(name) to send a private message</li>
+            <li>!accept (game or room depending on invite) (name of initiator) to accept a request</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div id="chat">
+        <div id="title">Main Chat</div>
+        <div id="mainChat"></div>
+        <div id="privateRoom" class="displayNone"></div>
+        <footer id="sendMessages">
+          <textarea id="msgBox" placeholder="Enter text"></textarea>
+          <input type="image" src="./images/send-icon.png" id="sendMsg"/>
+          <button id="leavePrivateRoom" class="displayNone">Leave</button>
+        </footer>
+
+      </div>
+      
+
+      <div id="game">
+        Game
+        <div id="countDownDiv"></div>
+        <div id="gameDiv" class="displayNone">
+          <input
+            type="image"
+            src="./images/paper.png"
+            alt="image of paper"
+            id="img1"
+            class="inputImage"
+          />
+          <input
+            type="image"
+            src="./images/rock.png"
+            alt="image of rock"
+            id="img2"
+            class="inputImage"
+          />
+          <input
+            type="image"
+            src="./images/scissors.png"
+            alt="image of scissors"
+            class="inputImage"
+            id="img3"
+          />
+        </div>
+       <div id="btnDiv">
+        <input
+        type="button"
+        id="continue"
+        value="Continue"
+        class="displayNone continueLeave"
+      />
+      <input type="button" id="leave" value="Leave" class="displayNone continueLeave" />
+    </div>
+      </div>
+    </main>
+    <!-- Will put a list of commands at the bottom of the page -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chatClient.js"></script>
+  </body>
+</html>
