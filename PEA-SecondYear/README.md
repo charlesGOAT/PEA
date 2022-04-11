@@ -10,5 +10,7 @@ In this folder, I put in my best work from year one of my computer science journ
 - Systems Analysis assignment 1<br/>
 - Systemn Analysis assignment 4<br/>
 - Co-op Work term report<br/>
+- Php assignment 3 (Web 4, all-in-one from)<br/>
+- HVK Team assignment (Web 5)
 
 
