@@ -1,0 +1,70 @@
+
+
+@font-face{font-family: "EA"; src: url(EASPORTS15.ttf) ; }
+@font-face{font-family: "EA2"; src: url(EALOGOREGULAR-PDGR.TTF) ;}
+body{ background-color:whitesmoke; font-size: 1.1em;
+width: 100%; font-family: "EA"; }
+
+
+h1{background-color: white;
+     border: 5px solid; 
+
+    background-image: url(../image/html2.jpg) ; 
+    background-position: left; background-repeat:
+ no-repeat; 
+ text-align: center ;
+ 
+ 
+ line-height: 200%; background-size: 200px;font-style: italic; padding: 40px; font-family: "EA2"; text-indent: 150px; margin-right: 40px;}
+h2{text-align: center;}
+ h3{text-align: center; text-decoration: underline; font-size: 25px;}
+
+
+     
+
+
+nav{border: 1px solid; background-color: rgb(167, 161, 161);}
+
+a{color: rgb(65, 63, 63);}
+
+.center {
+    max-width: 100%;
+    height: auto;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   width: 50%;
+   
+  }
+.services{color: rgb(250, 73, 73); font-size: large;}
+.games{text-align: center; font-size: large;}
+
+#wrapper{width: 90%;
+    margin-left: auto;
+margin-right: auto;}
+.background{background-position:center; width: 300px; height: 400px; background-image: url(./image/video-games.jpeg);}
+.yo{color: rgb(250, 73, 73) ; font-size: 20px; text-align: center;}
+.ayooo{ font-size: 20px;}
+.yoo{ border: 1px solid; background-position: left; font-size: 15px; text-align: center;}
+    .bruh{width: 200px; height: 300px; max-width: 100%; height: auto;
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+       width: 50%;}
+
+    .notMobile{display:none;}
+
+@media all and (min-width: 768px) {
+    body{font-size:var(--aside-size); }
+    .notMobile{display: inline;}}
+    .floatright{  display: block;
+        width: 200px;
+        height: 200px;
+        float: right;}
+        .grosgars{display: inline; list-style: none;}
+        .al{ border: 1px solid; background-color: rgb(167, 161, 161);}
+    ul li a:visited{color: rgb(250, 73, 73)}
+    table{margin-left: auto ;
+    margin-right: auto;}
