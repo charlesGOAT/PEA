@@ -1,0 +1,86 @@
+﻿@model HVK.Models.CustomReservation
+@using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+    string PetSelectErrorMsg =  "";
+    if (TempData.Peek("CreateResDatesErrorMsg") != null) {
+        PetSelectErrorMsg = TempData["CreateResDatesErrorMsg"].ToString() ?? "";
+    }
+
+    string todayDate = DateTime.Today.ToString("yyyy-MM-dd");
+
+}
+@{
+    ViewData["Title"] = "Create";
+
+    int lastAdded = 1;
+}
+
+<div class="row">
+    <form asp-action="Edit" class="formid book-reservation-form">
+        <h4>Modify Reservation</h4><br />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="StartDate" class="control-label"></label>
+            <input asp-for="StartDate" class="form-control" min="@todayDate"  />
+            <input asp-for="ReservationId" type="hidden"></input>
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+            <input asp-for="CustomerId" type ="hidden">
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="EndDate" class="control-label"></label>
+            <input asp-for="EndDate" class="form-control" min="@todayDate" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+            <br />
+        </div>
+        <br />
+        <h5>Dogs in Reservation</h5>
+        <div class="form-group">
+            @foreach(var Ischecked in Model.PetChecked)
+            {
+                if (Ischecked.Value)
+                {
+                    <input asp-for="@Model.PetChecked[Ischecked.Key]" class="check-box" type="checkbox" value="true" checked/><label asp-for="@Model.PetChecked[Ischecked.Key]">@Model.PetsList.Where(x=>x.PetId==Ischecked.Key).First().Name</label>
+                }
+            else
+                    {
+                    <input asp-for="@Model.PetChecked[Ischecked.Key]" class="check-box" type="checkbox" value="true" /><label asp-for="@Model.PetChecked[Ischecked.Key]">@Model.PetsList.Where(x=>x.PetId==Ischecked.Key).First().Name</label>
+                }
+                <input asp-for="@Model.PetChecked[Ischecked.Key]" type="hidden" value="false" /><br />
+                lastAdded = Ischecked.Key;
+            }
+             <span asp-validation-for="@Model.PetChecked[lastAdded]"></span>
+        </div>
+
+        @if (!String.IsNullOrEmpty(PetSelectErrorMsg))
+        {
+            <span id="select-pet-create-res-errmsg">@PetSelectErrorMsg</span>
+        }
+        <br />
+        <div class="contain">
+            <input type="submit" value="Submit" class="button" />
+            @if (MyRole == "user")
+            {
+                <a asp-action="Index" asp-controller="Home">Back</a>
+            }
+            else
+            {
+                <a asp-action="Index" asp-controller="Home" asp-route-id="@Model.CustomerId">Back</a>
+            }
+        </div>
+        <input type="hidden" asp-for="@Model.PetsList" />
+        @foreach (var pet in Model.PetsList)
+        {
+            <input type="hidden" asp-for="@pet">
+        }
+
+    </form>
+    
+</div>
+
+

@@ -1,0 +1,95 @@
+﻿
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Http;
+@model HVK.Models.Pet
+
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+    var lastAction = "";
+    if (TempData.Peek("LastAction") != null)
+    {
+        lastAction = TempData["LastAction"].ToString();
+    }
+
+    var TempId = -1;
+    if (TempData.Peek("Id") != null)
+    {
+        TempId = (int)TempData["Id"];
+    }
+
+    var ClerkCustomerId = -1;
+    if (TempData.Peek("ClerkCustomer") != null) {
+        ClerkCustomerId = (int) TempData["ClerkCustomer"];
+    }
+}
+@{
+    ViewData["Title"] = "Edit";
+}
+<div id="petform">
+    <form asp-action="Edit" asp-controller="Pets">
+        <h2 class="slightbold">Update Pet</h2>
+        <br />
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" id="pet-name-input" />
+        <span asp-validation-for="Name"></span>
+        <br />
+        <input type="hidden" asp-for="PetId" />
+        <input type="hidden" asp-for="CustomerId" />
+        <label asp-for="Gender" class="form-label"></label><br />
+        @foreach (var sex in Enum.GetValues(typeof(Pet.GenderOptions)))
+        {
+            <input type="radio" asp-for="Gender" value="@sex.ToString().Substring(0,1)" id="@sex" class="sexradio" />
+            <label for="@sex">@sex</label><br />}
+        <span asp-validation-for="Gender"></span>
+        <br />
+        <label asp-for="Birthyear" class="form-label"></label>
+        <input asp-for="Birthyear" class="form-control" id="birthdateinput" />
+        <span asp-validation-for="Birthyear"></span>
+        <br />
+        <label asp-for="Breed" class="form-label"></label>
+        <input asp-for="Breed" class="form-control" value="@Model.Breed">
+        <span asp-validation-for="Breed"></span>
+        <br />
+        <p class="optional-asterix">*</p>
+        <label asp-for="DogSize" class="form-label"></label><br />
+        @foreach (var size in Enum.GetValues(typeof(Pet.Size)))
+        {
+            <input type="radio" asp-for="DogSize" value="@(size.ToString().Substring(0,1))" id="@size" class="sizeradio" />
+            <label for="@size">@size</label><br />}
+        <span asp-validation-for="DogSize"></span>
+        <br />
+        <p class="optional-asterix">*</p>
+        <p>
+            <span title="Barker: select this if your dog barks a lot. Climber: select this if your dog will try to climb out of it's kennel" class="material-icons behaviour-help-icon">
+                help
+            </span>
+            Behaviour
+        </p>
+        <input type="checkbox" asp-for="Barker" />
+        <label asp-for="Barker"></label>
+        <br />
+        <input type="checkbox" asp-for="Climber" />
+        <label asp-for="Climber"></label>
+        <br />        <br />
+        <p class="optional-text">* Optional</p>
+        <div id="petbtns">
+            <br />
+            <a href="~/petvaccinations/edit/@Model.PetId"><input type="button" id="vacbtn" value="Update Vaccinations" /></a><br /><br />
+            <div class="contain">
+                <input type="submit" id="savebtn" value="Save" />
+                @if (lastAction == "StartPetVisit")
+                {
+                    <a asp-action="StartPetVisit" asp-controller="Clerk" asp-route-id="@TempId" class="backbutton">Back</a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="Home" asp-route-id="@ClerkCustomerId" class="backbutton">Back</a>
+                }
+            </div>
+        </div>
+    </form>
+</div>

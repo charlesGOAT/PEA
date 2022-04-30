@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@inject HVK.Models.FormattingService DisplayFormat
+@model IEnumerable<HVK.Models.PetReservation>
+@using Newtonsoft.Json;
+@{
+    Run runId = JsonConvert.DeserializeObject<Run>(ViewBag.runId);
+    bool hasPetres = false;
+}
+<main>
+    <div class="assignpetdiv">
+        <h2 class="manageReservation">Select an Unassigned Pet</h2>
+        <div class="assignpetitems">
+            @foreach (var petres in Model)
+            {
+                hasPetres = true;
+                <a asp-action="ConfirmAssignPet" asp-controller="Clerk" asp-route-petResId="@petres.PetReservationId" asp-route-runId="@runId.RunId">
+                    <div class="assignpetitem">
+                        <h4>@petres.Pet.Name</h4>
+                        <p>@DisplayFormat.SizeString(petres.Pet.DogSize)</p>
+                        <p>@petres.Pet.Breed</p>
+                        @if (@petres.Pet.Barker)
+                        {
+                            <p>Barker</p>
+                        }
+                        @if (petres.Pet.Climber)
+                        {
+                            <p>Climber</p>
+                        }
+                    </div>
+                </a>
+            }
+            @if(!hasPetres)
+            {
+                <p>There are no pets available to assign.</p>
+            }
+        </div>
+        <br />
+        <div class="assignback">
+            <a asp-action="Index" asp-controller="Clerk" class="backbutton">Back</a>
+        </div>
+    </div>
+</main>

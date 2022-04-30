@@ -1,0 +1,213 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@model HVK.Models.Reservation
+@{
+
+    var PetReservations = Model.PetReservations;
+    var Customer = PetReservations.First().Pet.Customer;
+
+
+    List<Pet> PetsList = JsonConvert.DeserializeObject<List<Pet>>(ViewBag.PetsListObj);
+
+    List<PetReservationService> PetReservationServicesList = JsonConvert.DeserializeObject<List<PetReservationService>>(ViewBag.PetResServsObj);
+
+    List<PetReservationDiscount> PetReservationDiscountsList = JsonConvert.DeserializeObject<List<PetReservationDiscount>>(ViewBag.PetResDiscsObj);
+
+    List<ReservationDiscount> ReservationDiscountsList = JsonConvert.DeserializeObject<List<ReservationDiscount>>(ViewBag.ReservationDiscountsObj);
+
+    List<DailyRate> DailyRatesList = JsonConvert.DeserializeObject<List<DailyRate>>(ViewBag.DailyRates);
+
+    List<Discount> DiscountsList = JsonConvert.DeserializeObject<List<Discount>>(ViewBag.Discounts);
+
+    var TempId = -1;
+    if (TempData.Peek("Id") != null)
+    {
+        TempId = (int)TempData["Id"];
+    }
+}
+
+<main id="contract-main">
+
+    <div id="contract-div">
+        <div id="contract-hvk-header">
+            <h1>Happy Valley Kennels Inc.</h1>
+            <h2>Boarding Contract</h2>
+            <hr />
+            <p>Date: @DateTime.Today.ToString("yyyy-MM-dd")</p>
+        </div>
+        <div id="contract-customer-info-header">
+            <div class="cust-contract-info">
+                <h5>Customer</h5>
+                <p>Name:&nbsp; @Customer.FirstName @Customer.LastName</p>
+                @if (string.IsNullOrEmpty(Customer.Street) && string.IsNullOrEmpty(Customer.City))
+                {
+                    <p>Address:&nbsp;No street or city on file.</p>
+                }
+                else
+                {
+                    <p>Address:&nbsp; @Customer.Street, @Customer.City</p>
+                }
+
+            </div>
+            <div class="emergency-contract-info">
+                <h5>Emergency Contact</h5>
+                @if (string.IsNullOrEmpty(Customer.EmergencyContactFirstName) && string.IsNullOrEmpty(Customer.EmergencyContactLastName) && string.IsNullOrEmpty(Customer.EmergencyContactPhone))
+                {
+                    <p>No emergency contact information on file.</p>
+                }
+                else
+                {
+                    <p>Name:&nbsp; @Customer.EmergencyContactFirstName @Customer.EmergencyContactLastName</p>
+                    <p>Phone:&nbsp; @Customer.EmergencyContactPhone</p>
+                }
+            </div>
+
+        </div>
+        <div id="contract-reservation-info-header">
+            <h4>Reservation</h4>
+            <p>Start Date:&nbsp;@Model.StartDate.ToString("yyyy-MM-dd")</p>
+            <p>End  Date:&nbsp;@Model.EndDate.ToString("yyyy-MM-dd")</p>
+            <p>Number of days:&nbsp; @Model.EndDate.Subtract(Model.StartDate).TotalDays</p>
+        </div>
+        <div id="contract-pet-info">
+            <div class="contract"><h3>Pet</h3><h3>Services</h3><h3 class="align-right">Daily Rate</h3></div>
+
+
+            @foreach (var pr in Model.PetReservations)
+            {
+
+                var petId = pr.PetId;
+                var currPet = PetsList.Where(x => x.PetId == petId).First();
+                var currPetResId = PetReservations.Where(x => x.PetId == petId).First().PetReservationId;
+
+                <div class="div-contract-pet-row">
+                    <div class="pet-info-div">
+                        <h5>Name:&nbsp; @currPet.Name</h5>
+                        <p>Size:&nbsp; @currPet.DogSize</p>
+                        @if (string.IsNullOrEmpty(currPet.SpecialNotes))
+                        {
+                            <p>Notes:&nbsp; @currPet.SpecialNotes</p>
+                        }
+                        else
+                        {
+                            <p>Notes:&nbsp; No special notes.</p>
+                        }
+
+                    </div>
+                    <div class="services-rates-info-div">
+                        @{
+                            var currPetServices = PetReservationServicesList.Where(x => x.PetReservationId == pr.PetReservationId);
+                            var currPetServicesIdList = new List<int>();
+                            var size = currPet.DogSize;
+                            foreach (var s in currPetServices)
+                            {
+                                currPetServicesIdList.Add(s.ServiceId);
+                            }
+                        }
+                        <div class="row">
+
+
+                            <p>Boarding</p>
+
+                            @if (currPetServicesIdList.Contains(1))
+                            {
+                                var rate = DailyRatesList.Where(x => x.DogSize == size && x.ServiceId == 1).First().Rate;
+                                <p>@rate</p>
+                            }
+                            else
+                            {
+                                <p>0</p>
+                            }
+
+                        </div>
+                        <div class="row">
+                            @if (currPetServicesIdList.Contains(2))
+                            {
+                                var rate = DailyRatesList.Where(x => x.DogSize == size && x.ServiceId == 2).First().Rate;
+                                <p><span class="material-icons checkbox-icon-selected">select_check_box</span> Daily Walk</p>
+                                <p>@rate</p>
+                            }
+                            else
+                            { <p><span class="material-icons checkbox-icon"> check_box_outline_blank</span> Daily Walk</p>
+                                <p>0</p>
+                            }
+
+
+
+                        </div>
+                        <div class="row">
+                            @if (currPetServicesIdList.Contains(5))
+                            {
+                                var rate = DailyRatesList.Where(x => x.ServiceId == 5).First().Rate;
+                                <p><span class="material-icons checkbox-icon-selected">select_check_box</span> Daily Playtime</p>
+                                <p>@rate</p>
+                            }
+                            else
+                            {
+                                <p><span class="material-icons checkbox-icon">check_box_outline_blank</span>Daily Playtime</p>
+                                <p>0</p>
+                            }
+                        </div>
+                        <div class="row">
+                            @if (currPetServicesIdList.Contains(4))
+                            {
+                                var rate = DailyRatesList.Where(x => x.ServiceId == 4).First().Rate;
+                                <p><span class="material-icons checkbox-icon-selected">select_check_box</span> Medication</p>
+                                <p>@rate</p>
+                            }
+                            else
+                            { <p><span class="material-icons checkbox-icon">check_box_outline_blank</span> Medication</p>
+                                <p>0</p>
+                            }
+                        </div>
+                        <div class="last-row">
+                            <p> Pet Discounts: </p>
+                            <p> Pet Discounts: </p>
+                            @if (PetReservationDiscountsList.Count() == 0)
+                            {
+                                <p>No applicable discounts.</p>
+                            }
+                            @foreach (var rd in PetReservationDiscountsList)
+                            {
+                                var disc = DiscountsList.Where(x => x.DiscountId == rd.DiscountId && rd.PetReservationId == currPetResId).First();
+
+                                <p>@disc.Desciption: @(disc.Percentage * 100)%</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        <div id="contract-customer-discounts">
+            <h4>Customer Discounts</h4>
+
+
+            @if (ReservationDiscountsList.Count() == 0)
+            {
+                <p>No applicable discounts.</p>
+            }
+            else
+            {
+                @foreach (var rd in ReservationDiscountsList)
+                {
+                    var d = DiscountsList.Where(x => x.DiscountId == rd.DiscountId).First();
+                    <p>@d.Desciption: @(d.Percentage * 100)%</p>
+                }
+            }
+
+        </div>
+        <div id="contract-footer">
+            <p>I understand and agree to the terms and conditions of this contract (see reverse side) and agree that Happy Valley Kennels is not liable for loss or illness of my pet.</p>
+            <br />
+            <br />
+            <p id="signature-line">Signature of Customer</p><p id="date-line">Date</p>
+        </div>
+    </div>
+
+    <div class="buttons-div"><a href="#" id="startvisit-confirm">Print</a><a asp-action="StartPetVisit" asp-controller="Clerk" asp-route-id="@TempId" class="backbutton">Back</a></div>
+</main>

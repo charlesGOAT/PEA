@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HVK.Models.Run;
+@{
+}
+<main>
+    <div class="runstatusdiv">
+        <h4 class="manageReservation">Change Run Status</h4>
+        <div class="runstatusoptions">
+            <p>Run @Model.RunId</p>
+
+            @using (Html.BeginForm("ConfirmRunStatus", "Clerk", new { id = Model.RunId }))
+            {
+                @Html.RadioButton("answer", "Available", new {id = "1", @class="run-radio" }) <label for="1">Available</label><br />
+                @Html.RadioButton("answer", "Needs Cleaning", new { id = "2", @class = "run-radio" }) <label for="2">Needs Cleaning</label><br />
+                @Html.RadioButton("answer", "Needs Maintenance", new { id = "3", @class = "run-radio" }) <label for="3">Needs Maintenance</label><br /><br />
+                <div id="runbuttons">
+                    <input type="submit" value="Confirm" id="RunSubmit" class="confirmbutton" />
+                    <a asp-action="Index" asp-controller="Clerk" class="backbutton">Back</a>
+                </div>
+            }
+        </div>
+    </div>
+</main>

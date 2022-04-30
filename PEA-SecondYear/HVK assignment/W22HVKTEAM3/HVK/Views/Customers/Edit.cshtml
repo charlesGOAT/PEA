@@ -1,0 +1,158 @@
+﻿@using HVK.Models;
+@model HVK.Models.Customer;
+@using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+
+    var lastAction = "";
+    if (TempData.Peek("LastAction") != null)
+    {
+        lastAction = TempData.Peek("LastAction").ToString();
+    }
+
+    var ClerkCustomerId = -1;
+    if (TempData.Peek("ClerkCustomer") != null)
+    {
+        ClerkCustomerId = (int)TempData.Peek("ClerkCustomer");
+    }
+
+    var TempId = -1;
+    if (TempData.Peek("Id") != null)
+    {
+        TempId = (int)TempData.Peek("Id");
+    }
+
+}
+
+<div class="ManageAccount">
+    <form method="post" asp-action="Edit" asp-controller="Customers">
+        <h2 class="signIn">Manage Account</h2>
+        <div class="input-div">
+
+            <h3>Contact Info @ViewBag.Message</h3>
+            <label asp-for="FirstName" class="form-label">
+                First Name
+
+            </label> <input asp-for="FirstName" class="userfield form-control" placeholder="Enter First Name" value="@Model.FirstName" />
+            <span asp-validation-for="FirstName"></span><br />
+            <label asp-for="LastName" class="form-label">
+                Last Name
+
+            </label><input asp-for="LastName" class="userfield  form-control" placeholder="Enter Last Name" value="@Model.LastName" />
+            <span asp-validation-for="LastName"></span><br />
+
+            <label asp-for="Phone" class="form-label">
+                Phone Number
+
+            </label> <input asp-for="Phone" class="userfield form-control" placeholder="9999999999" value="@Model.Phone" />
+            <span asp-validation-for="Phone"></span><br />
+
+            <label asp-for="CellPhone" class="form-label">
+                Cell Phone Number
+
+            </label> <input asp-for="CellPhone" class="userfield form-control" placeholder="9999999999" value="@Model.CellPhone" />
+            <span asp-validation-for="CellPhone"></span><br />
+
+            <label asp-for="Email" class="form-label">
+                Email
+
+            </label> <input asp-for="Email" class="userfield form-control" placeholder="Enter Email" value="@Model.Email" />
+            <span asp-validation-for="Email"></span><br />
+
+            <hr />
+            <h3>Address</h3>
+            <label asp-for="Street" class="form-label">
+                Street Name:
+
+            </label> <input asp-for="Street" class="userfield form-control" placeholder="Enter Street Name" value="@Model.Street" />
+            <span asp-validation-for="Street"></span><br />
+
+
+            <label asp-for="City" class="form-label">
+                City:
+
+            </label> <input asp-for="City" name="city" class="userfield form-control" placeholder="Enter City" value="@Model.City" />
+            <span asp-validation-for="City"></span><br />
+            <br />
+            <div class="postalDiv">
+                <label asp-for="Province" class="form-label">
+                    Province
+                </label><br />
+                <select asp-for="Province" asp-items="@new SelectList(Enum.GetValues(typeof(Customer.Provinces)))">
+                  
+                </select>
+            </div>
+            <div class="postal-code">
+                <label asp-for="PostalCode" class="form-label">
+                    Postal Code
+
+                </label><input asp-for="PostalCode" class="form-control" placeholder="J8Z3N5" value="@Model.PostalCode" />
+                <span asp-validation-for="PostalCode"></span>
+            </div>
+            <br>
+            <hr>
+            <h3>Emergency Contact (Optional)</h3>
+            <label for="efname" class="form-label">
+                First Name
+
+            </label> <input asp-for="EmergencyContactFirstName" class="userfield form-control" placeholder="Enter Emergency First Name" value="@Model.EmergencyContactFirstName" />
+            <span asp-validation-for="EmergencyContactFirstName"></span>
+            <br />
+            <label for="elname" class="form-label">
+                Last Name
+
+            </label><input asp-for="EmergencyContactLastName" class="userfield  form-control" placeholder="Enter Emergency Last Name" value="@Model.EmergencyContactLastName" />
+            <span asp-validation-for="EmergencyContactLastName"></span>
+            <br />
+            <label for="ephone" class="form-label">
+                Phone Number
+
+            </label> <input asp-for="EmergencyContactPhone" class="userfield form-control" placeholder="9999999999" value="@Model.EmergencyContactPhone" />
+            <span asp-validation-for="EmergencyContactPhone"></span>
+            <br>
+            <hr>
+
+
+            <label asp-for="Password" class="form-label">
+                Password
+
+            </label><input asp-for="Password" type="password" class="userfield form-control" placeholder="Enter Password" value="@Model.Password" />
+            <span asp-validation-for="Password"></span><br />
+            <label asp-for="ConfirmPassword" class="form-label">
+                Confirm Password
+
+            </label><input asp-for="ConfirmPassword" type="password" class="userfield  form-control" placeholder="Enter Password" value="@Model.Password" />
+            <span asp-validation-for="ConfirmPassword"></span>
+            <input type="hidden" asp-for="CustomerId">
+            <br />
+
+        </div> <hr>
+               <div class="contain">
+                   <input type="submit" class="submitButton" value="Submit">
+                   @if (MyRole == "user")
+                   {
+                       <a asp-action="Index" asp-controller="Home" class="backbutton">Back</a>
+                   }
+                   else if (lastAction == "StartPetVisit")
+                   {
+                       <a asp-action="StartPetVisit" asp-controller="Clerk" asp-route-id="@TempId">Back</a>
+                   }
+                   else
+                   {
+                       <a asp-action="Index" asp-controller="Home" asp-route-id="@ClerkCustomerId" class="backbutton">Back</a>
+                   }
+               </div>
+        <div class="errorDiv"></div>
+    </form>
+</div>
+
+<div id="delete-acc-div">
+    <form asp-action="DeleteAccount">
+        <h6>I no longer would like an account:</h6>
+        <input type="submit" value="Delete My Account" />
+    </form>
+</div>

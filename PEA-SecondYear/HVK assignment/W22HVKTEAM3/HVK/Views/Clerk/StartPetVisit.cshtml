@@ -1,0 +1,86 @@
+﻿@model HVK.Models.Reservation
+@using Newtonsoft.Json;
+@{
+    Layout = "_Clerk";
+
+    //var PetRes = new PetReservation();
+    //PetRes.SetData();
+    List<Pet> AllPetsList = JsonConvert.DeserializeObject<List<Pet>>(ViewBag.AllPets);
+    Customer customer = JsonConvert.DeserializeObject<Customer>(ViewBag.CustomerObjString);
+}
+<main>
+    <div class="ManageAccount">
+        <div class="connect">
+            <h2 class="manageReservation">Start Visit</h2>
+            <div>
+                <div class="cust-info-start-visit">
+                    <h3>Customer Information</h3>
+                    <p>@customer.FirstName @customer.LastName</p>
+                    <p>@String.Format("{0:###-###-####}", long.Parse(customer.Phone))</p>
+                    <a asp-action="Edit" asp-route-id="@customer.CustomerId" asp-controller="Customers">
+                        <span class="material-icons edit-icon">
+                            edit
+                        </span>
+                    </a>
+                </div>
+                <hr>
+                <div class="reservationGrid">
+                    <div>
+                        <h3>
+                            Reservation Details
+                        </h3>
+
+
+                        <p>@Model.StartDate.Year/@Model.StartDate.Month/@Model.StartDate.Day</p>
+
+                    </div>
+
+                    <div class="start-visit-pet-info">
+                        @foreach (var PetRes in Model.PetReservations)
+                        {
+
+
+                            var Pet = AllPetsList.Where(p => p.PetId == PetRes.PetId).FirstOrDefault();
+                            char dogsize = Pet.DogSize[0];
+                            <h4>@Pet.Name</h4>
+                            <ul>
+
+                                @if (dogsize == 'L')
+                                {
+                                    <li>Large</li>
+                                }
+                                else if (dogsize == 'M')
+                                {
+                                    <li>Medium</li>
+                                }
+                                else
+                                {
+                                    <li>Small</li>
+                                }
+
+                                <li>@Pet.Breed</li>
+                            </ul>
+                            <a asp-controller="pets" asp-action="edit" asp-route-id="@Pet.PetId"  class="edit-icon-a">
+                                <span class="material-icons edit-icon">
+                                    edit
+                                </span>
+                            </a>
+                        }
+
+                    </div>
+                </div>
+                <hr />
+
+                <div class="contain">
+                    <div class="link" id="start-visit-links-div">
+                        <a asp-action="ConfirmStartVisit" asp-controller="Clerk" asp-route-id="@Model.ReservationId" id="startvisit-btn">Confirm Start</a>
+                        <a asp-action="Contract" asp-controller="Clerk" asp-route-id="@Model.ReservationId" id="contract-btn">Contract</a>
+                        <a asp-action="Index" asp-controller="Clerk" class="backbutton">Back</a>
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

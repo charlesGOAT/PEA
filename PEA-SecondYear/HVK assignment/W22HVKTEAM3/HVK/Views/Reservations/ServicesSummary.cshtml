@@ -1,0 +1,146 @@
+﻿@model HVK.Models.CustomReservation
+@using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+
+}
+@{
+
+    ViewData["Title"] = "Summary";
+    if (Model.PetIds.Count == 0)
+    {
+        @foreach (var Pet in Model.PetsList)
+        {
+            Model.PetIds.Add(Pet.PetId);
+        }
+    }
+    int TempCustId = -1;
+                if (TempData.Peek("TempCustId") != null) {
+            TempCustId = (int)TempData.Peek("TempCustId");
+        } 
+}
+
+<main>
+    <div class="servicesummary">
+        <h3 class="manageReservation">Summary of services</h3>
+        @if (TempData.Peek("Error") != null)
+        {
+            string PetSelectErrorMsg = TempData["Error"].ToString() ?? "";
+            <h4>@PetSelectErrorMsg</h4>
+        }
+
+        <form asp-action="AddMedication" asp-controller="Reservations" method="post">
+
+            <input type="hidden" asp-for="@Model.StartDate">
+            <input type="hidden" asp-for="@Model.EndDate">
+            @foreach (var Pet in Model.PetsList)
+            {
+
+
+                var index = Model.PetIds.IndexOf(Pet.PetId);
+                Model.SelectedPet = Model.PetIds[index];
+
+                <div><h3>@Pet.Name</h3></div>
+                <input type="hidden" asp-for="@Model.StartDate">
+                <input type="hidden" asp-for="@Model.EndDate">
+
+                @for (int MyPet = 0; MyPet < Model.PetsList.Count(); ++MyPet)
+                {
+                    <input type="hidden" asp-for="PetIds[MyPet]" />
+                }
+
+                @foreach (var Service in Model.Walk)
+                {
+
+                    if (Service.Key == Model.SelectedPet)
+                    {
+                        <input type=checkbox asp-for="@Model.Walk[Service.Key]" value="true" />
+                        <input type=hidden asp-for="@Model.Walk[Service.Key]" value="false" />
+                        <label asp-for="@Model.Walk[Service.Key]">Daily walk</label>
+                        <br />
+                        <input type=checkbox asp-for="@Model.Playtime[Service.Key]" value="true" />
+                        <input type=hidden asp-for="@Model.Playtime[Service.Key]" value="false" />
+                        <label asp-for="@Model.Playtime[Service.Key]">Daily playtime</label>
+                    }
+
+                }
+
+                <br />
+
+                <input type="hidden" asp-for="@Model.SelectedPet" value="@Model.SelectedPet" />
+                @foreach (var Medication in Model.MedicationDescriptionList)
+                {
+                    var counter = 0;
+
+                    foreach (var RMedication in Medication.Value)
+                    {
+
+                        if (Medication.Key == Model.SelectedPet)
+                        {
+                            <br />
+                            <div class="med-div">
+                                <h5>Medication @(counter + 1)</h5>
+                                <label class="med-label" asp-for="@Model.MedicationDescriptionList[Medication.Key][counter]">Medication name</label>
+                                <input class="med-text" type="text" asp-for="@Model.MedicationDescriptionList[Medication.Key][counter]" /><br />
+
+                                <label class="med-label" asp-for="@Model.MedicationNameList[Medication.Key][counter]">Medication dosage</label>
+                                <input class="med-text" type="text" asp-for="@Model.MedicationNameList[Medication.Key][counter]" /><br />
+
+                                <label class="med-label" asp-for="@Model.SpecialInstruct[Medication.Key][counter]">Special Instructions</label>
+                                <input class="med-text" type="textarea" asp-for="@Model.SpecialInstruct[Medication.Key][counter]" /><br />
+
+                                <label class="med-label" asp-for="@Model.MedEndDate[Medication.Key][counter]">End Date</label>
+                                <input class="med-text" type="date" asp-for=@Model.MedEndDate[Medication.Key][counter] min="@Model.StartDate.Value.ToString("yyyy-MM-dd")" max="@Model.EndDate.Value.ToString("yyyy-MM-dd")" />
+                            </div>
+                        }
+
+                        ++counter;
+                    }
+
+
+                }<br />
+                <input type="submit" name="sub" class="add-med-btn" value="Add Medication for @Pet.Name" />
+                <input type="submit" name="sub" class="rmv-med-btn" value="Remove Medication for @Pet.Name" />
+
+
+                <div class="MedicationDiv"></div>
+                <hr />
+            }
+
+            <div class="row">
+                <div class="link">
+                    <input type="submit" name="sub" value="Submit" id="submit-services-meds" />
+                  
+                    @if (MyRole == "user")
+                    {
+                     
+                        <a asp-action="Create" asp-route-id="@TempCustId" asp-controller="Reservations">
+                            Back
+                        </a>
+                    }
+                    else
+                    {
+                    
+                        <a asp-action="Create" asp-route-id="@TempCustId" asp-controller="Reservations">
+                            Back
+                        </a>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="reshomediv">
+        @if (MyRole == "user")
+        {
+            <a asp-action="Index" asp-controller="Home" class="resbackhomebtn">Home Page</a>
+        }
+        else
+        {
+            @*<a asp-action="Index" asp-controller="Home" asp-route-id="@Model.CustomerId" class="resbackhomebtn">Back</a>*@
+        }
+    </div>
+</main>

@@ -1,0 +1,33 @@
+﻿@model ErrorViewModel
+
+@using System.Security.Claims;
+@{
+
+
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+}
+
+<div class="error-msg-page-div">
+    <h1 class="purple-accent">Oops...</h1>
+    <h2 class="">That page does not exist.</h2>
+
+    @{
+        if (MyRole == "user")
+        {
+            <div class="clerk-back-div"><a asp-action="Index" asp-controller="Home" class="clerk-back-button">Back to Homepage</a></div>
+        }
+        else if (MyRole == "clerk")
+        {
+            <div class="clerk-back-div"><a asp-action="Index" asp-controller="Clerk" class="clerk-back-button">Back to Clerk Homepage</a></div>
+        }
+
+    }
+
+</div>
+
+
+

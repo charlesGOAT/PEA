@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Http
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+  
+}
+@model HVK.Models.DeletePet
+<main>
+    <form asp-action="delete" class="confirmation-form">
+        <h4>Are you sure you would like to remove <span class="purple-accent">@Model.Name</span> from your account?</h4>
+        <br />
+        <input type="hidden" asp-for="PetId" />
+        <input type="hidden" asp-for="Name" />
+        <input class="check-box" asp-for="ConfirmDelete" type="checkbox" /><label asp-for="ConfirmDelete"> Yes, I confirm that I would like to remove <span class="purple-accent">@Model.Name</span></label><br />
+        <span class="asp-validation-span" asp-validation-for="ConfirmDelete"></span>
+        <div id="petdelbtns">
+            <input id="confirmdelpet" type="submit" value="Remove"/> |
+            @if (MyRole == "user")
+            {
+                <a asp-action="Index" asp-controller="Home" class="backbutton">Cancel</a>
+            }
+            else
+            {
+                <a asp-action="Index" asp-controller="Clerk" class="backbutton">Cancel</a>
+            }
+        </div>
+
+    </form>
+</main>

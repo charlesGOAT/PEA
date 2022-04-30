@@ -1,0 +1,50 @@
+﻿@model HVK.Models.Reservation
+@*@model IEnumerable<HVK.Models.Reservation>*@
+    @using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+
+}
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="deleteres">
+    <p>Are you sure you would like to cancel the reservation for</p>
+    <div class="purptext">
+        @foreach (var Pet in Model.PetReservations)
+        {
+            @Pet.Pet.Name<br />
+        }
+    </div><br />
+    <p>
+        Scheduled for :
+        <div class="purptext">
+            @Model.StartDate.ToString("yyyy-MM-dd")
+            to
+            @Model.EndDate.ToString("yyyy-MM-dd")
+        </div>
+    </p><br />
+
+        <form asp-action="Delete">
+            <input type="checkbox" id="confirm" asp-for="ConfirmDelete">
+            <label asp-for="ConfirmDelete">Yes, I confirm that I would like to cancel the above reservation</label><br /><br />
+            <input type="hidden" asp-for="ReservationId" />
+            <span class="asp-validation-span" asp-validation-for="ConfirmDelete"></span>
+            <div class="contain">
+                <input type="submit" value="Delete" id="resconfirmbutton" /> |
+                @if (MyRole == "user")
+                {
+                    <a asp-action="Index" asp-controller="Home" class="backbutton">Cancel</a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="Clerk" class="backbutton">Cancel</a>
+                }
+            </div>
+        </form>
+</div>

@@ -1,0 +1,2413 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Biryani:wght@200;300;400;600;700;800;900&family=Questrial&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --white: #fbfcff;
+    --light-purple: #e9eeff;
+    --purple-primary: #6753e8;
+    --purple-secondary: #3b1d8f;
+    --blue: #006ce5;
+    --hvk-title-purple: #5444be;
+    --green-checkmarks: #4fae17;
+}
+
+* {
+    font-family: 'Biryani', sans-serif;
+}
+
+.right-align {
+    text-align: right;
+}
+
+body {
+    margin: 0;
+}
+
+.phoneOrEmail span {
+   color:red;
+}
+.noAccount {
+    color:var(--purple-primary);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+h1 {
+    color: var(--hvk-title-purple);
+    margin: 0;
+    font-size: 30px;
+    padding: 20px 15px 15px 15px;
+}
+
+.align-right {
+    text-align: right;
+    margin-right: 1px;
+}
+
+#banner {
+    position: static;
+    top: 0%;
+    margin: 0;
+    width: 100%;
+    padding-right: 10px;
+    box-shadow: -1px 0 5px #555;
+}
+
+footer {
+    margin-top: 5%;
+    text-align: center;
+}
+
+
+body {
+    font-family: 'Biryani', sans-serif;
+}
+
+.construction {
+    font-size: 3em;
+    text-decoration: underline;
+    margin-top: 5%;
+    text-align: center;
+}
+
+
+.center {
+    text-align: center;
+}
+
+
+/*Login Page*/
+
+#signin {
+    text-decoration: underline;
+    text-decoration-color: #5444be;
+    margin-bottom: 15%;
+    font-size: 30px;
+}
+
+#loginform {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    max-width: 400px;
+}
+
+#loginemaillabel {
+    position: relative;
+    right: 24.5%;
+}
+
+.logininput {
+    width: 300px;
+    height: 35px;
+    font-size: 20px;
+    margin-bottom: 30px;
+    border-color: rgb(0, 123, 238);
+}
+
+
+#loginpasswordlabel {
+    position: relative;
+    right: 20.5%;
+}
+
+#loginbutton {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    background-color: var(--purple-primary);
+    color: white;
+    width: 30%;
+}
+
+    #loginbutton:hover {
+        background-color: grey;
+    }
+
+.loginlinks {
+    font-weight: bold;
+    color: var(--purple-primary);
+}
+
+/*Manage Reservation*/
+
+#reservationsummary {
+    margin: auto;
+    margin-top: 20px;
+    padding: 3% 3% 3% 3%;
+    padding-bottom: 3%;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    width: 700px;
+}
+
+.servicesummary {
+    margin: auto;
+    margin-top: 20px;
+    padding: 3% 3% 3% 3%;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    width: 700px;
+}
+
+.reshomediv {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.resbackhomebtn {
+    color: var(--blue);
+    font-weight: bold;
+    transition: 300ms;
+    padding: 5px 14px;
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+}
+
+#createres {
+    margin: auto;
+    margin-top: 20px;
+    padding: 3% 3% 3% 3%;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    width: 700px;
+}
+
+.reservationpages {
+    margin: auto;
+    margin-top: 20px;
+    padding: 2% 3% 1.1% 3%;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    width: 700px;
+}
+
+#ressummary {
+    text-decoration: underline;
+    text-decoration-color: #5444be;
+    margin-bottom: 5%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#petheader {
+    font-size: 24px;
+}
+
+.stafftable {
+    width: 80%;
+    border: 1px solid #000033;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #000033;
+}
+
+td {
+    text-align: left;
+}
+
+#resconfirmbutton {
+    margin-top: 2%;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--purple-secondary);
+    color: white;
+    width: 32%;
+}
+
+#confirmdelpet {
+    margin-top: 2%;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--purple-secondary);
+    color: white;
+    width: 22%;
+}
+
+    #resconfirmbutton:hover {
+        background-color: grey;
+    }
+
+#confirmdelpet:hover {
+    background-color: grey;
+}
+#medstatus {
+    font-size: 20px;
+}
+
+a {
+    color: var(--purple-primary);
+}
+
+#editres {
+    float: right;
+    color: var(--purple-primary);
+    padding-right: 25px;
+}
+
+.deleteres {
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+        box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 800px;
+    padding-bottom: 80px;
+    margin-top: 30px;
+    padding: 50px 70px 50px 70px;
+}
+
+.purptext {
+    color: var(--purple-secondary);
+    font-size: 1.4em;
+}
+
+/*Clerk Home Page*/
+
+#homediv {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-top: 4%;
+    padding-bottom: 3%;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    max-width: 95%;
+}
+
+#homedivrow1 {
+    width: 95%;
+}
+
+#todaydate {
+    display: inline;
+}
+
+#homesearchbar {
+    display: inline;
+    float: right;
+}
+
+#homesearchbutton {
+    display: inline;
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 5px;
+}
+
+    #homesearchbutton:hover {
+        background-color: grey;
+    }
+
+#homeaddcustbutton {
+    background-color: var(--blue);
+    color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    margin-top: 5%;
+}
+
+    #homeaddcustbutton:hover {
+        background-color: grey;
+    }
+
+#homeaddresbutton {
+    background-color: var(--blue);
+    color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    margin-top: 5%;
+}
+
+    #homeaddresbutton:hover {
+        background-color: grey;
+    }
+
+#homedivrow3 {
+    margin-top: 3%;
+    width: 97%;
+    overflow: auto;
+}
+
+.startendbtn {
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 8px;
+}
+
+    .startendbtn:hover {
+        background-color: grey;
+    }
+
+/*Reservations*/
+
+#reservationdiv {
+    display: inline;
+    width: 48%;
+    float: left;
+}
+
+.reservationrows {
+    width: 49%;
+}
+
+/*Future*/
+
+#futureresdiv {
+    background-color: var(--purple-primary);
+    width: 200%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#futuretitle {
+    display: inline;
+    color: var(--white);
+    padding-left: 5px;
+    width: 49%;
+}
+
+#futuresearch {
+    display: inline;
+    margin-left: 27%;
+}
+
+#futuresearchbutton {
+}
+
+#futuresearchbar {
+    width: 40%;
+}
+
+#futuredivtable {
+    width: 250%;
+    border-style: hidden;
+}
+
+th {
+    background-color: #444;
+    color: white;
+    border-style: hidden;
+}
+
+thead {
+    width: 100%;
+    border-style: hidden;
+}
+
+td {
+    border-style: hidden;
+}
+
+/*Current*/
+#currentsdiv {
+    background-color: var(--purple-primary);
+    margin-top: 8%;
+    width: 200%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#currentitle {
+    display: inline;
+    color: var(--white);
+    padding-left: 5px;
+    width: 49%;
+}
+
+#currentsearch {
+    display: inline;
+    margin-left: 27%;
+}
+
+#currentsearchbar {
+    width: 40%;
+}
+
+
+
+#currentdivtable th {
+    background-color: #444;
+    color: white;
+}
+
+#currentdivtable {
+    width: 250%;
+}
+
+/*Runs*/
+#runsdiv {
+    width: 48%;
+    display: inline;
+    float: right;
+    overflow-y: scroll;
+    height: 600px;
+}
+
+#runstitle {
+    background-color: var(--purple-primary);
+    color: var(--white);
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+#runsectionid {
+    display: inline-block;
+    margin: 0, 15px, 0, 15px;
+    width: 100%;
+}
+
+#runiddiv {
+    display: inline;
+    width: 70%;
+}
+
+#runstatusdiv {
+    display: inline;
+    margin-left: 1%;
+}
+
+#runbuttondiv {
+    display: inline;
+    float: right;
+}
+
+#checkicon {
+    display: inline;
+    margin-left: 2%;
+    float: right;
+}
+
+#assignpetbtn {
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 8px;
+}
+
+    #assignpetbtn:hover {
+        background-color: grey;
+    }
+
+.editicon {
+    color: var(--purple-primary);
+    font-size: 24px;
+    margin: auto;
+}
+
+.remove_circle {
+    color: orange;
+}
+
+.check_circle {
+    color: var(--green-checkmarks);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/*Manage Pet*/
+
+#petform {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    padding: 3% 40px 3% 40px;
+    max-width: 400px;
+}
+
+#vacbtn {
+    background-color: var(--purple-primary);
+    color: var(--white);
+    border-radius: 5px;
+    width: 70%;
+}
+
+
+    #vacbtn:hover {
+        background-color: grey;
+    }
+
+#savebtn {
+    color: var(--white);
+    width: 30%;
+    margin-right: 10%;
+    margin-top: 2%;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--purple-secondary);
+}
+
+    #savebtn:hover {
+        background-color: grey;
+    }
+
+#helpicon {
+    font-size: 18px;
+    margin-left: 45%;
+    color: var(--blue);
+}
+
+
+#confirmdelpet {
+    margin-top: 2%;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--purple-secondary);
+    color: white;
+    width: 22%;
+}
+
+
+
+/*Charles CSS*/
+
+
+.ManageAccount {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 700px;
+    padding-bottom: 80px;
+    animation-name: formAnimate;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    margin-top: 30px;
+    padding: 20px;
+    height: 100%;
+}
+
+.rightColumn {
+    padding-left: 250px;
+}
+
+.pricesGrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    border: 1px solid grey;
+}
+
+    .pricesGrid div {
+        border: 1px solid black;
+    }
+
+        .pricesGrid div:nth-last-child(1n+5) {
+            background-color: rgb(198, 198, 210);
+        }
+
+
+.EndVisit {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 800px;
+    padding-bottom: 80px;
+    animation-name: formAnimate;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    margin-top: 30px;
+    padding: 20px;
+    height: 100%;
+}
+
+.runstatusdiv {
+    font-size: 1.2em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 450px;
+    padding-bottom: 80px;
+    animation-name: formAnimate;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    margin-top: 30px;
+    padding: 35px 30px 30px 30px;
+    height: 100%;
+
+}
+
+.runstatusoptions {
+    padding-left: 57px;
+}
+
+#runbuttons {
+    padding-right: 70px;
+    margin-right: 30px;
+}
+
+.assignpetdiv {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 800px;
+    padding-bottom: 80px;
+    animation-name: formAnimate;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    margin-top: 30px;
+    padding: 20px 20px 50px 20px;
+    height: 100%;
+}
+
+.assignpetitems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.assignpetitem {
+    border: 1px solid black;
+    background-color: white;
+    border: 1px solid grey;
+    padding: 10px;
+    display: inline-block;
+    width: 18rem;
+    color: black;
+    border-radius: 3px;
+    height: 160px;
+    margin: 3px
+}
+
+    .assignpetitem p {
+        margin: 1px;
+    }
+
+    a .assignpetitem:hover {
+        color: var(--purple-secondary);
+        border: 2px solid var(--purple-secondary);
+        padding: 8px;
+    }
+
+.assignback {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.assignpetitem a  {
+    color: black;
+}
+
+.assignback {
+    float: left;
+    margin-left: 60px;
+}
+
+#title {
+    color: #5444be;
+}
+
+.loginForm {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 400px;
+    padding-bottom: 80px;
+    margin-top: 30px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+
+.reservationGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+    .reservationGrid div:nth-child(even) {
+        border: 1px solid black;
+        width: 250px;
+        padding-left: 10px;
+        margin-left: 100px;
+    }
+
+    .reservationGrid div ul {
+        list-style: none;
+    }
+
+.invoiceGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.prices {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+    .prices div:nth-child(odd) {
+        font-size: 1.3em;
+        margin-left: 490px;
+        margin-right: 15px;
+    }
+
+    .prices div:nth-child(even) {
+        border: 1px solid black;
+        width: 173px;
+    }
+
+.listInfo {
+    list-style-type: none;
+}
+
+.myGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 0px;
+    width: 500px
+}
+
+    .myGrid div {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+
+.signIn {
+    text-decoration: underline;
+    text-decoration-color: #5444be;
+    text-align: center;
+    margin-bottom: 15%;
+    font-size: 30px;
+}
+
+.manageReservation {
+    text-decoration: underline;
+    text-decoration-color: #5444be;
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: 30px;
+}
+
+.userfield {
+    width: 300px;
+    height: 35px;
+    font-size: 20px;
+    border-color: rgb(0, 123, 238);
+}
+
+.postal-code {
+    display: inline-block;
+    margin-left: 10px;
+    width: 350px;
+}
+
+.postalDiv {
+    display: inline-block;
+    margin-left: 10px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+
+.submitButton {
+    background-color: #5444be;
+    color: white;
+    box-shadow: 0px 4px 4px rgb(32, 12, 19);
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 0 10% 0 10%;
+}
+
+.backbutton {
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+.loginbutton {
+    display: block;
+    background-color: #5444be;
+    color: white;
+    box-shadow: 0px 4px 4px rgb(32, 12, 19);
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 5px auto 21px auto;
+}
+
+.theButton {
+    display: block;
+    background-color: #5444be;
+    color: white;
+    box-shadow: 0px 4px 4px rgb(32, 12, 19);
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 5px auto 21px auto;
+}
+
+.link {
+    margin-top: 35px;
+    margin-right: 20px;
+    font-size: large;
+}
+
+#theButton:hover {
+    background-color: rgb(0, 99, 212);
+    box-shadow: 3px 7px 7px rgb(32, 12, 19);
+}
+
+.input-div {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.vaccinationGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid grey;
+}
+
+    .vaccinationGrid div {
+        border: 1px solid black;
+    }
+
+        .vaccinationGrid div:nth-child(-n+3) {
+            background-color: rgb(198, 198, 210);
+            font-size: 1.3em
+        }
+
+.customer-section {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.customer-subsection {
+    background-color: var(--white);
+    box-shadow: 0 0 8px #777;
+    padding: 20px;
+    width: 99%;
+    margin: 1.5em;
+}
+
+.customer-section {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+}
+
+.customer-subsection .cust-data-labels {
+    display: inline-block;
+    margin-right: 15px;
+    width: 150px;
+    text-align: right;
+}
+
+.customer-subsection p {
+    margin: 5px;
+}
+
+.cust-info-subsection {
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: top;
+}
+
+.edit-icon, .delete-icon, .add-icon {
+    color: var(--purple-primary);
+    position: relative;
+    font-size: 24px;
+}
+
+.add-icon {
+    top: 15px;
+}
+
+.delete-icon {
+    margin-left: 5px;
+}
+
+.customer-subsection a {
+    color: var(--purple-secondary);
+}
+
+.section-icons {
+    text-align: right;
+    margin: 0;
+}
+
+
+.cust-info-title {
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid var(--purple-secondary);
+    margin-bottom: 20px !important;
+}
+
+.customer-info {
+    display: inline-block;
+}
+
+.customer-section .customer-subsection .pet-section,
+.customer-section .customer-subsection .reservation-section {
+    background-color: white;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 3px;
+    height: 120px;
+    overflow:hidden;
+    width: 10%;
+}
+
+
+    .customer-section .customer-subsection .pet-section .pet-info,
+    .customer-section .customer-subsection .reservation-section .reservation-info {
+        display: inline-block;
+    }
+
+    .customer-section .customer-subsection .pet-section .section-icons,
+    .customer-section .customer-subsection .reservation-section .section-icons {
+        display: inline-block;
+        position: relative;
+        top: 18px;
+        float: right;
+    }
+
+    .customer-section .customer-subsection .pet-section .pet-info h4,
+    .customer-section .customer-subsection .reservation-section .reservation-info h4 {
+        font-size: 20px;
+    }
+
+    .customer-section .customer-subsection .reservation-section .reservation-info h4 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-bottom: 2px solid var(--blue);
+    }
+
+
+    .customer-section .customer-subsection .pet-section .pet-info p {
+        font-size: 12px;
+    }
+
+#bookreservationbtn {
+    display: inline-block;
+    margin-left: 5%;
+    margin-top: 30px;
+    background-color: var(--purple-secondary);
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+    transition: 250ms;
+}
+
+    #bookreservationbtn:hover {
+        background-color: var(--purple-primary);
+    }
+
+.cust-info-title {
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid var(--purple-secondary);
+    margin-bottom: 20px !important;
+}
+
+.customer-section a {
+    text-decoration: none;
+    color: var(--purple-primary);
+    font-size: 1.3em;
+}
+
+
+a.book-reservations-link {
+    display: inline-block;
+    background-color: var(--purple-secondary);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white !important;
+    transition: 250ms;
+    font-size: 1.3em;
+    height: 40px;
+}
+
+.customer-info ul {
+    list-style: none;
+}
+
+/*Kristina CSS*/
+
+h2.slightbold {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.customer-section {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.customer-subsection {
+    background-color: var(--white);
+    box-shadow: 0 0 8px #777;
+    padding: 20px;
+    width: 100%;
+    margin: auto;
+}
+
+    .customer-subsection .cust-data-labels {
+        display: inline-block;
+        margin-right: 15px;
+        width: 150px;
+        text-align: right;
+    }
+
+    .customer-subsection p {
+        margin: 5px;
+    }
+
+
+.cust-info-subsection {
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: top;
+}
+
+.delete-icon {
+    margin-left: 5px;
+}
+
+.edit-icon:hover, .add-icon:hover, .delete-icon:hover {
+    color: rebeccapurple;
+}
+
+.edit-icon, .delete-icon {
+    color: var(--purple-primary);
+    position: relative;
+    font-size: 24px;
+}
+
+.customer-subsection a {
+    color: var(--purple-secondary);
+}
+
+a {
+    text-decoration: none;
+}
+
+.section-icons {
+    text-align: right;
+    margin: 0;
+}
+
+
+.cust-info-title {
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid var(--purple-secondary);
+    margin-bottom: 20px !important;
+}
+
+.customer-info {
+    display: inline-block;
+}
+
+.customer-section .customer-subsection .pet-section,
+.customer-section .customer-subsection .reservation-section {
+    background-color: white;
+    border: 1px solid grey;
+    padding: 10px;
+    display: inline-block;
+    width: 18rem;
+    margin: 3px;
+}
+
+
+    .customer-section .customer-subsection .pet-section .pet-info,
+    .customer-section .customer-subsection .reservation-section .reservation-info {
+        display: inline-block;
+    }
+
+    .customer-section .customer-subsection .pet-section .section-icons,
+    .customer-section .customer-subsection .reservation-section .section-icons {
+        display: inline-block;
+        position: relative;
+        top: 18px;
+    }
+
+    .customer-section .customer-subsection .pet-section .pet-info h4,
+    .customer-section .customer-subsection .reservation-section .reservation-info h4 {
+        font-size: 20px;
+    }
+
+    .customer-section .customer-subsection .reservation-section .reservation-info h4 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-bottom: 2px solid var(--blue);
+    }
+
+
+    .customer-section .customer-subsection .pet-section .pet-info p {
+        font-size: 12px;
+    }
+
+.past-reservations-link {
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 5%;
+    margin-top: 30px;
+    background-color: var(--purple-secondary);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    transition: 250ms;
+}
+
+    .past-reservations-link:hover {
+        background-color: var(--purple-primary);
+        color: white;
+    }
+
+a.book-reservations-link {
+    display: inline-block;
+    background-color: var(--purple-secondary);
+    border-radius: 5px;
+    padding: 10px 10px 5px 10px;
+    color: white;
+    transition: 250ms;
+    font-size: 15px;
+}
+
+.book-reservations-link:hover {
+    background-color: var(--purple-primary);
+    color: white;
+}
+
+
+.customer-subsection .edit-icon-a {
+    position: relative;
+    top: 10px;
+}
+
+.customer-subsection .edit-icon-a {
+    position: relative;
+    top: 10px;
+}
+
+.customer-subsection .pet-section .edit-icon-a, .customer-subsection .reservation-section .edit-icon-a {
+    position: relative;
+    top: 0px;
+}
+
+.customer-subsection .pet-section .delete-icon-a, .customer-subsection .reservation-section .delete-icon-a {
+    position: relative;
+    top: 1px;
+}
+
+#petdelbtns a.backbutton {
+    text-decoration: none;
+    margin-left: -10px;
+    vertical-align: central;
+}
+
+/*-----------------Clerk-Homepage----------------*/
+
+#add-cust-btn:hover {
+    background-color: darkblue;
+}
+
+#create-res-btn:hover {
+    background-color: darkblue;
+}
+
+.search-results-table {
+    width: 100%;
+    border-top: 2px solid #222;
+}
+
+.check-icon {
+    color: var(--green-checkmarks);
+}
+
+.warning-icon {
+    color: darkred;
+}
+
+div.clerk-page-row-1 {
+    margin-top: 10px;
+    margin-left: 3%;
+}
+
+div.today-date {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+div.general-search {
+    display: inline-block;
+    float: right;
+}
+
+    div.general-search #general-search-input {
+        width: 400px;
+        transition: 150ms;
+        border: 1px solid black;
+        border-radius: 8px;
+    }
+
+        div.general-search #general-search-input:hover {
+            color: black;
+            background-color: #bde3ff;
+        }
+
+    div.general-search #general-submit-btn {
+        background-color: var(--blue);
+        color: white;
+        border-radius: 8px;
+        border: 1px solid var(--blue);
+        padding: 3px 15px;
+        transition: 250ms;
+    }
+        div.general-search #general-submit-btn:hover {
+            background-color: darkblue;
+        }
+
+div.clerk-page-row-2 a {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-left: 1.5%;
+    margin-right: 15px;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 8px;
+    border: 1px solid var(--blue);
+    transition: 250ms;
+}
+
+div.main-data-container {
+    width: 97%;
+    margin: 0 auto;
+    margin: 0 auto;
+}
+
+div.reservations-container, div.runs-container {
+    width: 49%;
+    display: inline-block;
+    margin-top: 30px;
+    vertical-align: top;
+}
+
+.future-reservations-container {
+    height: 355px;
+    overflow-y: scroll;
+}
+
+    div.reservations-container div.current-reservations-container,
+    div.reservations-container div.future-reservations-container {
+        border: 1px solid var(--purple-secondary);
+        margin-bottom: 10px;
+    }
+
+div.clerk-page-row-2 input:hover {
+    background-color: dodgerblue;
+}
+
+.future-reservations-container form {
+    background-color: var(--hvk-title-purple);
+}
+
+.future-res-search-div {
+    float: right;
+}
+
+div.future-reservations-row-1 {
+    background-color: var(--hvk-title-purple);
+    padding: 5px;
+}
+
+div.future-reservations-row-1 div {
+    display: inline-block;
+}
+
+div.future-reservations-row-1 h4 {
+     font-size: 20px;
+     position: relative;
+     transform: translateY(30%);
+     color: white;
+}
+
+.end-visit-btn {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 3px 5px;
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+    transition: 300ms;
+    font-size: 1em;
+    position: relative;
+    bottom: 5px;
+    left: 15px;
+}
+
+    .end-visit-btn:hover {
+        background-color: darkblue;
+        color: var(--white);
+    }
+
+.start-visit-btn {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 3px 5px;
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+    transition: 300ms;
+    font-size: 1em;
+    position: relative;
+    bottom: 5px;
+    left: 15px;
+}
+
+    .start-visit-btn:hover {
+        background-color: darkblue;
+        color: var(--white);
+    }
+    .future-reservations-data-table table {
+    width: 100%;
+    border-top: 2px solid #222;
+}
+
+    .future-reservations-data-table table thead {
+        background-color: #444;
+        color: white;
+    }
+
+    .future-reservations-data-table table td, .future-reservations-data-table table th {
+        padding: 5px;
+    }
+
+    .future-reservations-data-table table a.edit-icon-a {
+        position: relative;
+        top: 5px;
+    }
+
+    .future-reservations-data-table table input {
+        background-color: var(--blue);
+        color: white;
+        padding: 5px 15px;
+        margin-left: 10px;
+        border-radius: 8px;
+        border: 1px solid var(--blue);
+        transition: 250ms;
+    }
+
+        .future-reservations-data-table table input:hover {
+            background-color: dodgerblue;
+        }
+
+.current-reservations-container {
+    height: 355px;
+    overflow-y: scroll;
+}
+
+.search-results-table {
+    height: 655px;
+    width: 96%;
+    overflow-y: scroll;
+    border-top: 1px solid white;
+    margin-left: 2%;
+}
+
+.current-reservations-container form {
+    background-color: var(--hvk-title-purple);
+}
+
+.current-res-search-div {
+    float: right;
+}
+
+div.current-reservations-row-1 {
+    background-color: var(--hvk-title-purple);
+    padding: 5px;
+}
+
+    div.current-reservations-row-1 div {
+        display: inline-block;
+    }
+
+    div.current-reservations-row-1 h4 {
+        font-size: 20px;
+        position: relative;
+        transform: translateY(30%);
+        color: white;
+    }
+
+.current-reservations-data-table table {
+    width: 100%;
+    border-top: 2px solid #222;
+}
+
+    .current-reservations-data-table table thead {
+        background-color: #444;
+        color: white;
+    }
+
+    .current-reservations-data-table table td, .current-reservations-data-table table th {
+        padding: 5px;
+    }
+
+    .current-reservations-data-table table a.edit-icon-a {
+        position: relative;
+        top: 5px;
+    }
+
+    .current-reservations-data-table table input {
+        background-color: var(--blue);
+        color: white;
+        padding: 5px 15px;
+        margin-left: 10px;
+        border-radius: 8px;
+        border: 1px solid var(--blue);
+        transition: 250ms;
+    }
+
+        .current-reservations-data-table table input:hover {
+            background-color: dodgerblue;
+        }
+
+/**runs*/
+
+.runs-container {
+    border: 1px solid var(--hvk-title-purple);
+    height: 720px;
+    overflow-y: scroll;
+}
+
+.runs-row-1 {
+    background-color: var(--hvk-title-purple);
+    color: white;
+    padding: 20px 20px 5px 20px;
+}
+
+.run-section {
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.run-id, .run-status-title, .run-buttons {
+    display: inline-block;
+}
+
+    .run-id h6, .run-status-title h6 {
+        margin-top: 14px;
+        margin-left: 10px;
+    }
+
+.run-buttons {
+    float: right;
+}
+
+    .run-buttons input {
+        transform: translateY(-30%);
+    }
+
+.run-buttons .check-icon, .red-icon {
+    font-size: 36px;
+    color: var(--green-checkmarks);
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
+}
+
+.run-buttons .check-icon:hover, .red-icon:hover {
+    color: green;
+}
+
+    .run-buttons .remove-circle-icon:hover {
+        color: darkgoldenrod;
+    }
+
+    .run-buttons .red-icon:hover {
+        color: #b21616;
+    }
+
+.run-section:nth-of-type(odd) {
+    background-color: #eee;
+}
+
+.clerk-home-action-btn {
+    background-color: var(--blue);
+    color: white;
+    padding: 5px 15px;
+    margin-left: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--blue);
+    transition: 250ms;
+}
+
+.unassign-pet-btn {
+    background-color: #2f537e;
+}
+
+div.run-buttons a.assign-pet-btn, div.run-buttons a.unassign-pet-btn {
+    transition: 300ms;
+    position: relative;
+    top: -10px;
+}
+
+div.run-buttons a.assign-pet-btn:hover, div.run-buttons a.unassign-pet-btn:hover {
+    color: var(--white);
+    background-color: darkblue;
+}
+
+input.assign-pet-btn.clerk-home-action-btn:hover {
+    background-color: dodgerblue;
+}
+
+.run-buttons .remove-circle-icon {
+    font-size: 36px;
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
+    color: orange;
+}
+
+.start-visit-pet-info {
+    padding: 10px;
+}
+
+.action-a, .visit-back-a {
+    border-bottom: 2px solid var(--blue);
+    margin-left: 20px;
+    padding: 2px;
+}
+
+.sizeradio, .sexradio {
+    margin-right: 10px;
+}
+
+#petform {
+    animation-name: formAnimate;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+
+    #petform h4 {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    #petform p {
+        margin: 0 0 10px 0;
+    }
+
+.hint {
+    font-size: 10px;
+}
+
+.cancel-a {
+    position: relative;
+    top: 5px;
+    text-decoration: underline;
+}
+
+.construction-title {
+    padding: 50px;
+    text-align: center;
+}
+
+.start-visit-edit-icon-a span {
+    float: right;
+}
+
+.cust-info-start-visit .start-visit-edit-icon-a span {
+    position: relative;
+    top: -40px;
+}
+
+.clerk-vacc-table-div {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+    .clerk-vacc-table-div table {
+        width: 100%;
+        border: 1px solid #444;
+    }
+
+        .clerk-vacc-table-div table thead {
+            background-color: #444;
+            color: white;
+        }
+
+        .clerk-vacc-table-div table th {
+            padding: 5px;
+        }
+
+        .clerk-vacc-table-div table td {
+            padding: 5px;
+        }
+
+.vacc-edit-div, .edit-all-vacc-div {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+    .edit-all-vacc-div label, .edit-all-vacc-div input {
+        margin-right: 10px;
+    }
+
+    .vacc-edit-div .edit-btn-a #vacc-edit-btn-input {
+        width: 200px;
+        padding: 10px;
+        color: white;
+        background-color: var(--purple-secondary);
+        border-radius: 10px;
+    }
+
+        .vacc-edit-div .edit-btn-a #vacc-edit-btn-input:hover {
+            background-color: var(--purple-primary);
+        }
+
+#edit-all-btn-save {
+    background-color: var(--purple-secondary);
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+    #edit-all-btn-save:hover {
+        background-color: #444;
+    }
+
+.behaviour-help-icon {
+    position: relative;
+    top: 2px;
+    color: var(--blue);
+    font-size: 18px;
+}
+
+.prices {
+    margin-top: 10px;
+    position: relative;
+    left: -11px;
+}
+
+#service-total-input, #daily-rate-input, #quantity-input, #discount-input {
+    width: 100%;
+    border: 2px solid dodgerblue;
+}
+
+.save-invoice-edits-div {
+    width: 100%;
+    text-align: right;
+}
+
+    .save-invoice-edits-div input {
+        color: white;
+        background-color: var(--purple-secondary);
+        padding: 10px 15px 5px 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+        .save-invoice-edits-div input:hover {
+            background-color: #444;
+        }
+
+.input-validation-error {
+    background-color: rgba(255,0,0,0.1);
+}
+
+.field-validation-error {
+    color: red;
+    font-size: smaller;
+    display: block;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+
+.optional-asterix {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--blue);
+    position: relative;
+    top: 32px;
+    left: -15px;
+}
+
+.optional-text {
+    font-style: italic;
+    letter-spacing: 1px;
+    color: var(--blue);
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+main {
+    width: 95%;
+    margin: auto;
+}
+
+#book-res-btn-div {
+    width: 100%;
+    padding-top: 30px;
+}
+
+
+#logout-link {
+    float: right;
+    position: relative;
+    top: -60px;
+    right: 50px;
+    transition: 300ms;
+    padding: 15px 20px;
+    border-radius: 1px;
+}
+
+#logout-link:hover {
+    background-color: #eee;
+}
+
+.good {
+    background-color: rgba(0,255,0,0.2);
+    color: darkgreen;
+
+}
+
+.warning {
+    background-color: rgba(255,255,0,0.2);
+    color: black;
+}
+
+.expired-vacc, .missing-vacc {
+    background-color: rgba(255,0,0,0.2);
+    color: #C60000;
+}
+
+.vacc-table td {
+    text-align: center;
+}
+
+.vacc-table tr:nth-of-type(odd) {
+    background-color: #eee;
+}
+
+.vacc-table {
+    box-shadow: 0 0 1px black;
+}
+
+.change-all-vacc-p {
+margin-bottom: 20px;
+background-color: #eee;
+padding: 20px;
+text-align: center;
+border-radius: 5px;
+}
+
+#submit-change-all-vacc {
+    color: var(--white);
+    background-color: var(--purple-primary);
+    transition: 300ms;
+    border-radius: 30px;
+    padding: 5px 13px;
+    margin-left: 10px;
+}
+
+#submit-change-all-vacc:hover {
+    background-color: var(--purple-secondary);
+}
+
+
+
+.confirmation-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 800px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+
+.purple-accent {
+    color: var(--purple-primary);
+}
+
+.confirmation-form .check-box {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.confirmation-form .button, .book-reservation-form .button {
+    background-color: var(--purple-secondary);
+    color: var(--white);
+    margin-top: 24px;
+    padding: 7px 13px;
+    border-radius: 8px;
+    transition: 300ms;
+}
+    .confirmation-form .button:hover, .book-reservation-form .button:hover {
+        background-color: var(--purple-primary);
+    }
+
+.confirmation-form a {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    text-decoration:underline;
+}
+
+.confirmation-form .asp-validation-span {
+    margin-left: 10px;
+}
+
+.book-reservation-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 15px 25px rgb(0, 0, 0);
+    margin: auto;
+    width: 400px;
+    padding-bottom: 80px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+    .book-reservation-form .check-box {
+        margin-right: 10px;
+    }
+
+    .book-reservation-form a {
+        position: relative;
+        margin-left: 20px;
+        top: 5px;
+        text-decoration: underline;
+    }
+
+#select-pet-create-res-errmsg, #login-error-message {
+    color: red;
+}
+
+#delete-acc-div {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    text-align: center;
+}
+
+    #delete-acc-div input {
+        background: var(--white);
+        border: 1px solid var(--blue);
+        padding: 5px 10px;
+        border-radius: 8px;
+        transition: 300ms;
+        }
+
+        #delete-acc-div input:hover {
+            background-color: #efefef;
+        }
+
+#successful-delete-msg {
+    color: darkgreen;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    margin-top:30px;
+    padding: 10px;
+    animation-name: temp-message;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+@keyframes temp-message {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+/*** Contract ****/
+
+#contract-main {
+    width: 100%;
+}
+
+#contract-div {
+   width: 50%;
+   margin: 10px auto;
+   padding: 20px;
+   box-shadow: 0 0 10px #ccc;
+}
+
+#contract-footer {
+   margin-top: 20px;
+}
+
+#contract-footer #signature-line {
+    width: 400px;
+}
+    #contract-footer #date-line {
+        width: 200px;
+        margin-left: 30px;
+    }
+
+
+#signature-line, #date-line {
+   display: inline-block;
+   border-top: 1px solid black;
+}
+
+#contract-div #contract-hvk-header{
+    text-align: center;    
+    margin: 0;
+    width: 100%;
+}
+
+    #contract-div #contract-hvk-header h1 {
+        text-align: center;
+        display: block;
+    }
+    #contract-div #contract-hvk-header h2 {
+        text-align: center;
+        display: block;
+    }
+    #contract-div #contract-hvk-header p {
+        text-align: left;
+        display: block;
+    }
+
+.cust-contract-info, .emergency-contract-info {
+    display: inline-block;
+    width: 45%;
+}
+
+#contract-customer-info-header {
+    border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
+    padding-top: 10px;
+}
+
+#contract-reservation-info-header {
+    padding-top: 10px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 5px;
+}
+#contract-reservation-info-header  p {
+    display: inline-block;
+    width: 30%;
+}
+
+#contract-pet-info {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgrey;
+}
+
+    #contract-pet-info .contract {
+        background-color: lightgray;
+        padding: 20px 0px 5px 20px;
+        margin-bottom: 20px;
+    }
+
+#contract-pet-info .contract h3 {
+    display: inline-block;
+    width: 33%;
+    font-size: 1.3em;
+}
+
+    #contract-pet-info .contract h3:last-of-type {
+        padding-right: 12px;
+    }
+
+.div-contract-pet-row div {
+    display: inline-block;
+}
+
+.pet-info-div {
+    vertical-align: top;
+    width: 33%;
+}
+
+    .pet-info-div h5 {
+        font-size: 1.2em;
+    }
+
+.services-rates-info-div {
+    width: 66%;
+}
+
+    .services-rates-info-div .row {
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .services-rates-info-div .last-row {
+        padding-top: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+        border-bottom: 1px solid var(--light-purple);
+        position: relative;
+        left: -8px;
+    }
+
+    .services-rates-info-div .row p, .services-rates-info-div .last-row p {
+        display: inline-block;
+        width: 79%;
+        text-align: left;
+    }
+
+        .services-rates-info-div .row p:last-of-type {
+            text-align: right;
+            width:20%;
+        }
+
+#contract-customer-discounts {
+    border-bottom: 1px solid lightgrey;
+    padding: 10px 0 5px 0;
+}
+
+.checkbox-icon {
+    position: relative;
+    top: 6px;
+}
+
+.red-icon {
+    color: #fc3b3b;
+}
+
+.confirmbutton {
+    margin-left: 20px;
+    padding: 10px 20px;
+    background-color: var(--purple-primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    transition: 300ms;
+}
+
+.checkbox-icon-selected {
+    position: relative;
+    right: 168px;
+    width: 24px;
+    top:6px;
+}
+
+a.action-a {
+    font-size: 1.2em;
+    margin-right: 20px;
+}
+
+#startvisit-confirm {
+    margin-left: 20px;
+    padding: 10px 20px;
+    background-color: var(--purple-primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    transition: 300ms;
+}
+
+    #startvisit-confirm:hover {
+        background-color: var(--blue);
+    }
+
+
+.buttons-div {
+    width: 50%;
+    margin:30px auto;
+
+}
+
+    .buttons-div .backbutton {
+        margin-left: 30px;
+        position:relative;
+        top: 6px;
+    }
+
+.clerk-back-div {
+    margin-top: 20px;
+    margin-left:90px;
+}
+a.clerk-back-button {
+    color: var(--blue);
+    font-weight: bold;
+    transition: 300ms;
+    padding: 5px 14px;
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+}
+    a.clerk-back-button:hover {
+        color: var(--purple-primary);
+        border: 1px solid var(--purple-primary);
+    }
+
+.run-radio {
+    margin-right: 20px;
+    
+}
+
+/*------ Invoice -----*/
+
+#start-visit-links-div a:last-of-type {
+    position: relative;
+    top: 4px;
+}
+
+.invoice-prices-table-div table {
+    width: 100%;
+}
+
+.EndVisit td, .EndVisit th {
+    padding: 3px;
+}
+
+.EndVisit td.td-title {
+    font-weight: bold;
+}
+
+.EndVisit input, #contract-btn {
+    transition: 300ms;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #444;
+    color: black;
+}
+
+#contract-btn {
+    background-color: #eee;
+    font-size: 0.8em;
+}
+
+    .EndVisit input:hover, #contract-btn:hover {
+        background-color: #ddd;
+    }
+
+.EndVisit #endvisit-btn, #startvisit-btn, #edit-vacc-btn {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+    transition: 300ms;
+}
+
+.EndVisit a:last-of-type{
+    position: relative;
+    top: 4px;
+}
+
+.manage-vacc-div a:last-of-type {
+    position: relative;
+    top: 4px;
+    left: 10px;
+}
+
+#startvisit-btn, #edit-vacc-btn {
+    font-size: 0.85em;
+}
+
+    .EndVisit #endvisit-btn:hover, #startvisit-btn:hover, #edit-vacc-btn:hover {
+        background-color: var(--purple-secondary);
+        border-color: var(--purple-secondary);
+    }
+
+a.clerk-back-button.search-page {
+   position: absolute;
+   top: 120px;
+   left: 2%;
+}
+
+.field-validation-valid {
+    color: red;
+}
+
+/**-----Reservation Services------*/
+
+#reservation-services-summary-table th, #reservation-services-summary-table td, #reservation-medication-summary-table td, #reservation-medication-summary-table th {
+    padding: 5px 10px;
+}
+#reservation-medication-summary-table {
+    margin-bottom: 50px;
+}
+
+.add-med-btn {
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 3px;
+    border: 1px solid var(--blue);
+    margin-right: 20px;
+    transition: 300ms;
+    padding: 4px 8px;
+}
+    .add-med-btn:hover {
+        background-color: #0062cc;
+    }
+
+.rmv-med-btn {
+    transition: 300ms;
+    border-radius: 3px;
+    border: 1px solid darkgrey;
+    padding: 4px 8px;
+}
+
+    .rmv-med-btn:hover {
+        background-color: #ddd;
+    }
+
+label.med-label {
+    width: 160px;
+    text-align: right;
+    margin-right: 5px;
+
+}
+
+.servicesummary a {
+    position: relative;
+    top: 5px;
+}
+
+.servicesummary #submit-services-meds {
+    background-color: var(--purple-secondary);
+    color: var(--white);
+    margin-top: 24px;
+    padding: 7px 13px;
+    border-radius: 8px;
+    transition: 300ms;
+    margin-right: 10px;
+}
+    .servicesummary #submit-services-meds:hover {
+        background-color: var(--purple-primary);
+    }
+
+
+    /*-------Error Page--------*/
+
+.error-msg-page-div {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+    .error-msg-page-div h2 {
+        font-size: 1.2em;
+    }
+
+    .error-msg-page-div div {
+        margin: 50px 0 ;
+    }

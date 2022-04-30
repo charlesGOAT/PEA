@@ -1,0 +1,136 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HVK.Models.CustomReservation
+@using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+}
+
+<main>
+    <div class="reservationpages">
+
+        <h2 id="ressummary">Reservation Summary</h2>
+        <div>
+            <label id="resdates" for="dates">Dates:&emsp;</label>
+            <input type="date" name="startdate" class="dateinputs" value="@Model.StartDate.Value.ToString("yyyy-MM-dd")" />@*start date*@
+            to
+            <input type="date" name="enddate" class="dateinputs" value="@Model.EndDate.Value.ToString("yyyy-MM-dd")" />@*end date*@
+        </div>
+        <br />
+        <label for="petlist">Pets for this reservation:</label><br />
+
+        <br>
+        @foreach (var Pet in Model.PetsList)
+        {
+            if (Pet.Name != Model.PetsList[Model.PetsList.Count - 1].Name)
+            {
+                <span>@Pet.Name,</span>
+            }
+            else
+            {
+                <span>@Pet.Name</span>
+            }
+        }
+
+
+        <hr />
+        <br />
+
+        <h2 id="petheader">Daily Services</h2>
+        <table id="reservation-services-summary-table">
+            <tr>
+                <th>Pet Name</th>
+                <th>Playtime</th>
+                <th>Walk</th>
+            </tr>
+            @foreach (var MyPet in Model.PetsList)
+            {
+                <tr>
+                    <td>@MyPet.Name</td>
+                    <td>
+                        @if (Model.Playtime.Where(x => x.Key == MyPet.PetId).First().Value)
+                        {
+                            <span>Yes</span>
+
+                        }
+                        else
+                        {
+                            <span>No</span>
+                        }
+                    </td>
+                    <td>
+                        @if (Model.Walk.Where(x => x.Key == MyPet.PetId).First().Value)
+                        {
+                            <span>Yes</span>
+
+                        }
+                        else
+                        {
+                            <span>No</span>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <br />
+
+        @if (Model.MedicationDescriptionList != null)
+        {
+            <h3 id="medstatus">Medications</h3>@*Medication status*@
+            <table id="reservation-medication-summary-table">
+
+
+                @foreach (var MyPet in Model.PetsList)
+                {
+                    <tr><td class="bold">@MyPet.Name</td></tr>
+                    <tr>
+                        <th>Medication Name</th>
+                        <th>Medication dosage</th>
+                        <th>Special Instruction</th>
+                        <th>End Date</th>
+                    </tr>
+                    foreach (var Medication in Model.MedicationDescriptionList)
+                    {
+                        var counter = 0;
+                        foreach (var RMedication in Medication.Value)
+                        {
+                            if (MyPet.PetId == Medication.Key)
+                            {
+                                <tr><td>@Model.MedicationDescriptionList[Medication.Key][counter]</td><td>@Model.MedicationNameList[Medication.Key][counter]</td><td>@Model.SpecialInstruct[Medication.Key][counter]</td><td>@Model.MedEndDate[Medication.Key][counter].ToString("MM/dd/yyyy")</td></tr>
+                            }
+                            ++counter;
+                        }
+                    }
+                }
+
+            </table>
+        }
+      
+        <br />
+        <hr />
+        <p>
+            <a asp-controller="Reservations" asp-action="SummaryPage">
+                <input id="resconfirmbutton" type="submit" value="Confirm Reservation" />
+            </a>
+            &emsp; &emsp;
+   
+            @if (MyRole == "user")
+            {
+                <a asp-action="Index" asp-controller="Home">Cancel</a>
+            }
+            else
+            {
+                <a asp-action="Index" asp-controller="Clerk" asp-route-id="@Model.CustomerId">Cancel</a>
+            }
+        </p>
+    </div>
+    <div>
+    </div>
+</main>

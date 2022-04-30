@@ -1,0 +1,291 @@
+﻿@model IEnumerable<HVK.Models.Reservation>
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@{
+    Layout = "_Clerk";
+    //var runliststr = new HttpContext.Session.GetString("RunList");
+    List<Run> myrunlist = JsonConvert.DeserializeObject<List<Run>>(ViewBag.Runs);
+    List<PetReservation> myPetReslist = JsonConvert.DeserializeObject<List<PetReservation>>(ViewBag.PetRes);
+    List<Pet> AllPetsList = JsonConvert.DeserializeObject<List<Pet>>(ViewBag.AllPets);
+
+    List<Reservation> AllReservations = JsonConvert.DeserializeObject<List<Reservation>>(ViewBag.AllReservations);
+    List<Reservation> FutureReservations = JsonConvert.DeserializeObject<List<Reservation>>(ViewBag.FutureReservations);
+    List<Customer> AllCustomers = JsonConvert.DeserializeObject<List<Customer>>(ViewBag.CustomersList);
+
+     List<int> AllPetResReservationIds = new List<int>();
+
+    foreach (var petRes in myPetReslist) {
+        AllPetResReservationIds.Add(petRes.ReservationId);
+    }
+    bool isTrue = true;
+
+}
+<main>
+    <div class="clerk-home-container">
+        <div class="clerk-page-row-2">
+            <a asp-action="Index" asp-controller="Customers" id="add-cust-btn">Add Customer</a>
+            <a asp-action="Index" asp-controller="Clerk" asp-route-id="-1" id="create-res-btn">Create Reservation</a>
+            <div class="general-search">
+                <form class="general-search-form" asp-controller="Clerk" asp-action="Index" method="GET">
+                    <input type="text" maxlength="50" name="SearchString" id="general-search-input" />
+                    <input type="submit" value="Search" id="general-submit-btn" />
+                </form>
+            </div>
+        </div>
+
+        <div class="main-data-container">
+            <div class="reservations-container">
+
+                <div class="current-reservations-container">
+                    <div class="current-reservations-row-1">
+                        <div class="row-title">
+                            <h4>Current Reservations</h4>
+                        </div>
+                    </div>
+                    <div class="current-reservations-data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var hasCurrReservations = false;
+                                }
+
+                                @foreach (var Res in AllReservations.OrderBy(x => x.EndDate))
+                                {
+
+
+                                    @if (Res.Status == 3 && AllPetResReservationIds.Contains(Res.ReservationId))
+                                    {
+                                        hasCurrReservations = true;
+                                        var petId = myPetReslist.Where(x => x.ReservationId == Res.ReservationId).FirstOrDefault().PetId;
+                                        var pet = AllPetsList.Where(x => x.PetId == petId).FirstOrDefault();
+                                        var currCust = AllCustomers.Where(x => x.CustomerId == pet.CustomerId).FirstOrDefault();
+                                        <tr>
+                                            <td>
+                                                <span class="material-icons check-icon">
+                                                    check_circle
+                                                </span>
+                                            </td>
+                                            <td>@currCust.FirstName @currCust.LastName</td>
+                                            <td>@String.Format("{0:###-###-####}", long.Parse(currCust.Phone))</td>
+                                            <td>@Res.StartDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@Res.EndDate.ToString("yyyy-MM-dd")</td>
+                                            <td>
+                                                <a asp-action="Index" asp-route-id="@currCust.CustomerId" asp-controller="Home">
+                                                    <span class="material-icons edit-icon">
+                                                        edit
+                                                    </span>
+                                                </a>
+                                                @if (DateTime.Now.Day == @Res.EndDate.Day &&
+                                              DateTime.Now.Month == @Res.EndDate.Month &&
+                                              DateTime.Now.Year == @Res.EndDate.Year)
+                                                {
+                                                    <a asp-action="EndPetVisit" asp-route-id="@Res.ReservationId" asp-controller="Clerk" class="end-visit-btn" id="end-btn-1">End Visit</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                } @if (!hasCurrReservations)
+                                {
+                                    <tr>
+                                        <td>There Are No Current Reservations!</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="future-reservations-container">
+
+                    <div class="future-reservations-row-1">
+                        <div class="row-title">
+                            <h4>Future Reservations</h4>
+                        </div>
+                    </div>
+                    <div class="future-reservations-data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ 
+                                    var futureRes = AllReservations.Where(x=>x.StartDate.Date >= DateTime.Today.Date).OrderBy(x => x.StartDate).ToList();
+                                    var reducedList = new List<Reservation>();
+
+
+                                    for (int i = 0; i < 20; i++) {
+                                        if (AllPetResReservationIds.Contains(futureRes[i].ReservationId)) {
+                                            reducedList.Add(futureRes[i]);
+                                        }
+
+                                    }
+                                } 
+                                        @foreach(var Res in reducedList.OrderBy(x=>x.StartDate)) 
+                                        {      
+                                            
+
+                                        var petId = myPetReslist.Where(x => x.ReservationId == Res.ReservationId).FirstOrDefault().PetId;
+
+                                        var pet = AllPetsList.Where(x => x.PetId == petId).First();
+
+                                        var currCust = AllCustomers.Where(x=>x.CustomerId == pet.CustomerId).First();
+
+
+
+                                <tr>
+                                    <td>
+                                        <span class="material-icons check-icon">
+                                            check_circle
+                                        </span>
+                                    </td>
+                                    <td>@currCust.FirstName @currCust.LastName</td>
+                                    <td>@String.Format("{0:###-###-####}", long.Parse(currCust.Phone))</td>
+                                    <td>@Res.StartDate.ToString("yyyy-MM-dd")</td>
+                                    <td>@Res.EndDate.ToString("yyyy-MM-dd")</td>
+                                    <td>
+                                        <a asp-action="Index" asp-route-id="@currCust.CustomerId" asp-controller="Home">
+                                            <span class="material-icons edit-icon">
+                                                edit
+                                            </span>
+                                        </a>
+                                        @if (DateTime.Now.Day == Res.StartDate.Day &&
+                                      DateTime.Now.Month == Res.StartDate.Month &&
+                                      DateTime.Now.Year == Res.StartDate.Year)
+                                        {
+                                            <a asp-action="StartPetVisit" asp-route-id="@Res.ReservationId" asp-controller="Clerk" class="start-visit-btn" id="start-btn-1">Start Visit</a>
+                                        }
+                                    </td>
+                                </tr>
+                                        }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="runs-container">
+                <div class="runs-row-1">
+                    <h4>Runs</h4>
+                </div>
+
+                @foreach (var run in myrunlist)
+                {
+                    <div class="run-section">
+                        <div class="run-id">
+                            <h6>@run.RunId</h6>
+                        </div>
+                        <div class="run-status-title">
+                            @{
+                                bool IsAvailable = true;
+                            }
+                            @for (int i = 0; i < myPetReslist.Count(); i++)
+                            {
+                                var x = i;
+
+                                var currRes = Model.Where(x => x.ReservationId == myPetReslist[i].ReservationId).First();
+
+                                @if (myPetReslist[i].RunId == run.RunId && currRes.Status == 3 && currRes.StartDate <= DateTime.Now.Date)
+                                {
+
+                                    var PetName = AllPetsList.Where(p => p.PetId == myPetReslist[i].PetId).FirstOrDefault().Name;
+
+                                    <h6><span class="bold">@PetName</span></h6>
+                                    IsAvailable = false;
+                                }
+
+                            }
+                            @if (IsAvailable)
+                            {
+                                if (run.Status == 1)
+                                {
+                                    <h6>Available</h6>
+                                }
+                                else if (run.Status == 2)
+                                {
+                                    <h6>Needs Cleaning</h6>
+                                }
+                                else if (run.Status == 3)
+                                {
+                                    <h6>Needs Maintenance</h6>
+                                }
+                            }
+                        </div>
+                        <div class="run-buttons">
+                            @{ 
+                                bool petAssigned = false;
+                                bool found = false;
+                            }                         
+                                @for (int i = 0; i < myPetReslist.Count() && !found; i++)
+                                {
+                                    Reservation currRes = AllReservations.Where(x => x.ReservationId == myPetReslist[i].ReservationId).FirstOrDefault();
+                                    if (myPetReslist[i].RunId == run.RunId && currRes.Status == 3)
+                                    {
+                                        petAssigned = true;
+                                        found = true;                                       
+                                    }
+                                }
+                            @if (!petAssigned)
+                            {
+                                <a asp-action="AssignPet" asp-controller="Clerk" class="assign-pet-btn clerk-home-action-btn" asp-route-id="@run.RunId">Assign Pet</a>
+                            }
+                            else
+                            {
+                                <a asp-action="UnassignPet" asp-controller="Clerk" class="unassign-pet-btn clerk-home-action-btn" asp-route-runId="@run.RunId">Unassign Pet</a>
+                            }
+                            @if (IsAvailable)
+                            {
+                                if (run.Status == 1)
+                                {
+                                    <a asp-action="RunStatus" asp-controller="Clerk" asp-route-id="@run.RunId">
+                                        <span class="material-icons check-icon">
+                                            check_circle
+                                        </span>
+                                    </a>
+                                }
+                                else if (run.Status == 2)
+                                {
+                                    <a asp-action="RunStatus" asp-controller="Clerk" asp-route-id="@run.RunId">
+                                        <span class="material-icons red-icon">
+                                            construction
+                                        </span>
+                                    </a>
+                                }
+                                else if (run.Status == 3)
+                                {
+                                    <a asp-action="RunStatus" asp-controller="Clerk" asp-route-id="@run.RunId">
+                                        <span class="material-icons red-icon">
+                                            construction
+                                        </span>
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                <a>
+                                    <span class="material-icons remove-circle-icon">
+                                        remove_circle
+                                    </span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>

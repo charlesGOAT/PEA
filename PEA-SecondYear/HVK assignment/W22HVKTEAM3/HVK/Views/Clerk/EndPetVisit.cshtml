@@ -1,0 +1,167 @@
+﻿@model HVK.Models.Reservation
+@using Newtonsoft.Json;
+@{
+    Layout = "_Clerk";
+    Customer customer = JsonConvert.DeserializeObject<Customer>(ViewBag.CustomerObjString);
+    var PetReservations = Model.PetReservations;
+    //var Customer = PetReservations.First().Pet.Customer;
+
+
+    List<Pet> PetsList = JsonConvert.DeserializeObject<List<Pet>>(ViewBag.PetsListObj);
+
+    List<PetReservationService> PetReservationServicesList = JsonConvert.DeserializeObject<List<PetReservationService>>(ViewBag.PetResServsObj);
+
+    List<PetReservationDiscount> PetReservationDiscountsList = JsonConvert.DeserializeObject<List<PetReservationDiscount>>(ViewBag.PetResDiscsObj);
+
+    List<ReservationDiscount> ReservationDiscountsList = JsonConvert.DeserializeObject<List<ReservationDiscount>>(ViewBag.ReservationDiscountsObj);
+
+    List<DailyRate> DailyRatesList = JsonConvert.DeserializeObject<List<DailyRate>>(ViewBag.DailyRates);
+
+    List<Discount> DiscountsList = JsonConvert.DeserializeObject<List<Discount>>(ViewBag.Discounts);
+
+    List<Service> Services = JsonConvert.DeserializeObject<List<Service>>(ViewBag.Services);
+
+    var TempId = -1;
+    if (TempData.Peek("Id") != null)
+    {
+        TempId = (int)TempData["Id"];
+    }
+}
+<main>
+    <div class="EndVisit">
+        <h2 class="manageReservation slightbold">Invoice</h2>
+        <div class="invoiceGrid">
+            <div>
+                <ul class="listInfo">
+                    <li>Happy Valley Kennels</li>
+                    <li>123 Chemin Scott</li>
+                    <li>Chelsea, QC, J9B 1R6</li>
+                    <li>819-123-4567</li>
+                </ul>
+            </div>
+            <div class="rightColumn">
+                <ul class="listInfo">
+                    <li>Date: @DateTime.Now.Year/@DateTime.Now.Month/@DateTime.Now.Day </li>
+                    <li><br></li>
+                    <li>To: @customer.FirstName @customer.LastName</li>
+                </ul>
+            </div>
+        </div>
+        <div class="invoice-prices-table-div">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th><th class="right-align">Daily Rate</th><th class="center">Number of Days</th><th class="right-align">Item Total</thclass="right-align">
+                        @{ 
+                            var NumberDays = Model.EndDate.Subtract(Model.StartDate).TotalDays;
+                            double SubTotal = 0;
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var petRes in PetReservations)
+                    {
+                        var currPetId = petRes.PetId;
+                        var currPet = PetsList.Where(x => x.PetId == currPetId).First();
+                        @foreach (var prs in PetReservationServicesList.Where(x => x.PetReservationId == petRes.PetReservationId))
+                        {
+                            var currServiceId = prs.ServiceId;
+                            var currService = Services.Where(s => s.ServiceId == currServiceId).First();
+
+
+                            double currDailyRate = 0;
+
+                            if (currServiceId == 5 || currServiceId == 4)
+                            {
+                                currDailyRate = (double)DailyRatesList.Where(x => x.ServiceId == currServiceId).First().Rate;
+                            }
+                            else
+                            {
+                                currDailyRate = (double)DailyRatesList.Where(x => x.ServiceId == currServiceId && currPet.DogSize == x.DogSize).First().Rate;
+                            }
+                            SubTotal += NumberDays * currDailyRate;
+                            <tr>
+                                <td> @currService.ServiceDescription - @currPet.Name</td>
+                                <td class="right-align"> @String.Format("{0:C}", currDailyRate)</td>
+                                <td class="center">@NumberDays</td>
+                                <td class="right-align">@(String.Format("{0:C}", NumberDays * (double)currDailyRate))</td>
+                            </tr>
+                        }
+                        @foreach (var prd in PetReservationDiscountsList.Where(x => x.PetReservationId == petRes.PetReservationId))
+                        {
+
+                            var currDailyRate = (double)DailyRatesList.Where(x => x.ServiceId == 1 && currPet.DogSize == x.DogSize).First().Rate;
+                            var disc = DiscountsList.Where(x => x.DiscountId == prd.DiscountId && prd.PetReservationId == petRes.PetReservationId).First();
+                            SubTotal += (double)disc.Percentage * currDailyRate * NumberDays * -1;
+                            <tr>
+                                <td>Discount - @disc.Desciption</td>
+                                <td class="right-align">@((double)disc.Percentage * currDailyRate * -1)</td>
+                                <td class="center">@NumberDays</td>
+                                <td class="right-align">@((double)disc.Percentage * currDailyRate * NumberDays * -1)</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="td-title right-align">Subtotal</td>
+                        <td class="right-align">@String.Format("{0:C}", SubTotal)</td>
+                    </tr>
+                    @{
+                        bool threePets = false;
+                        if (PetReservations.Count() >= 3)
+                        {
+                            threePets = true;
+                        }
+
+                        double discAmt = 0;
+                        if (threePets)
+                        {
+                            discAmt = (double)DiscountsList.Where(x => x.DiscountId == 2).First().Percentage;
+                        }
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="td-title right-align">Reservation Discount</td>
+                        <td class="right-align">- @String.Format("{0:C}", SubTotal * discAmt)</td>
+                    </tr>
+                    @{
+                        SubTotal -= SubTotal * discAmt;
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="td-title right-align">Subtotal after discount</td>
+                        <td class="right-align">@String.Format("{0:C}", SubTotal)</td>
+                    </tr>
+                    @{
+                        var HST = 0.1497;
+                        var Total = SubTotal * (1 + HST);
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="td-title right-align">HST</td>
+                        <td class="right-align">@String.Format("{0:C}", SubTotal * HST)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="td-title  right-align">Total</td>
+                        <td class="right-align">@String.Format("{0:C}", Total)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <hr />
+        <div class="contain">
+            <div class="btn">
+                <a asp-action="ConfirmEndVisit" asp-controller="Clerk" asp-route-id="@Model.ReservationId" id="endvisit-btn">End Pet Visit</a>
+                <input type="submit" value="Print Invoice">
+                <a asp-action="Index" asp-controller="Clerk" class="backbutton">Back</a>
+            </div>
+        </div>
+    </div>
+</main>

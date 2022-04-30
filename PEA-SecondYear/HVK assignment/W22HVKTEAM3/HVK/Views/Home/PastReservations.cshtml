@@ -1,0 +1,73 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Reservation>
+@using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+
+
+
+}
+@{
+
+    int CustId = -1;
+    if (Model != null && Model.Count() > 0) {
+        CustId = Model.First().PetReservations.First().Pet.CustomerId;
+    }
+
+
+
+}
+
+<main>
+    <div class="customer-section">
+        <h2 class="slightbold">Past Reservations</h2>
+        <div class="customer-subsection">
+            @{bool hasPast = false;}
+
+            @foreach (var res in Model.OrderBy(x=>x.StartDate).ThenBy(x=>x.EndDate).Where(x=>x.EndDate.Date < DateTime.Now.Date))
+            {
+                hasPast = true;
+                <div class="reservation-section">
+                    <div class="reservation-info">
+
+                        <h4>@res.StartDate.ToString("yyyy-MM-dd") to @res.EndDate.ToString("yyyy-MM-dd")</h4>
+                        @{
+                            List<string> PetNames = new List<string>();
+                            List<int> petResIds = new List<int>();
+                        }  
+                                
+                                @foreach (var petRes in res.PetReservations)
+                                {
+
+
+                                    if (!petResIds.Contains(petRes.PetReservationId))
+                                    {
+                                        petResIds.Add(petRes.PetReservationId); 
+                                        PetNames.Add(petRes.Pet.Name);
+                                    }
+
+
+
+
+                                }
+                                <p>@string.Join(", ", PetNames)</p>
+                    </div>
+                </div>
+
+            }
+            @if (!hasPast)
+            {
+                <p>You Have No Past Reservations!</p>
+            }
+        </div><br />
+        <a asp-action="Index" asp-controller="Home" asp-route-id="@CustId">Back</a>
+    </div>
+</main>

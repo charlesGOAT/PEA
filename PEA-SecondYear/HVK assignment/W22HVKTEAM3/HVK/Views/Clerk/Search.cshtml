@@ -1,0 +1,113 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<HVK.Models.Customer>
+@{
+    Layout = "_Clerk";
+    bool resClicked = false;
+    var results = true;
+
+    if (Model.Count() == 0)
+    {
+        results = false;
+    }
+
+    var resbtnId = 0;
+    if (TempData.Peek("resbtnId") != null)
+    {
+        resbtnId = (int)TempData["resbtnId"];
+    }
+}
+<div class="general-search">
+    <form class="general-search-form" asp-controller="Clerk" asp-action="Index" method="GET">
+        <input type="text" maxlength="50" name="SearchString" id="general-search-input" />
+        <input type="submit" value="Search" id="general-submit-btn" />
+    </form>
+</div>
+<br />
+<div class="clerk-back-div"><a asp-action="Index" asp-controller="Clerk" asp-route-id="-2"  class="clerk-back-button search-page">Back Homepage</a></div>
+<div class="search-results-table">
+
+    <div class="current-reservations-row-1">
+        <div class="row-title">
+            <h4>Search Results</h4>
+        </div>
+    </div>
+    <div class="current-reservations-data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Pets</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cust in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="material-icons check-icon">
+                                check_circle
+                            </span>
+                        </td>
+                        <td>@cust.FirstName @cust.LastName</td>
+                        @{ if (cust.Phone != null)
+                            {
+                                <td>@String.Format("{0:###-###-####}", long.Parse(cust.Phone))</td>
+                            }
+                            else
+                            {
+                                <td>N/A</td>
+                            }
+
+                            if (cust.Email != null)
+                            {
+                                <td>@cust.Email</td>
+                            }
+                            else
+                            {
+                                <td>N/A</td>
+                            }
+                        }
+                        <td>
+                            @{
+                                var PetNameList = new List<string>();
+                            }
+                            @foreach (var Pet in cust.Pets)
+                            {
+                                PetNameList.Add(Pet.Name);
+                            }
+                            @string.Join(", ", PetNameList)
+                        </td>
+                        <td>
+                            <a asp-action="Index" asp-route-id="@cust.CustomerId" asp-controller="Home">
+                                <span class="material-icons edit-icon">
+                                    edit
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                @if (resbtnId == -1)
+                {
+                    resClicked = true;
+                    <tr>
+                        <td>Please search for a customer to book a reservation</td>
+                    </tr>
+                }
+                @if (!results && !resClicked)
+                {
+                    <tr>
+                        <td>There Are No Results</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

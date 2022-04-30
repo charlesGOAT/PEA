@@ -1,0 +1,204 @@
+﻿
+@model HVK.Models.Customer 
+@using System.Security.Claims;
+@{
+    List<Reservation> Reservations = ViewBag.Reservations;
+
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+
+
+    var ClerkCustomerId = -1;
+    if (TempData.Peek("ClerkCustomer") != null)
+    {
+        ClerkCustomerId = (int)TempData.Peek("ClerkCustomer");
+    }
+
+
+
+    string ChangeConfirmation = "";
+    if (TempData.Peek("SuccessfulChange") != null)
+    {
+        ChangeConfirmation = TempData["SuccessfulChange"].ToString() ?? "";
+    }
+}
+<main>
+    @if (MyRole == "clerk")
+    {
+        <div class="clerk-back-div"><a asp-action="Index" asp-controller="Clerk" class="clerk-back-button">Back to Clerk Homepage</a></div>
+    }
+    @if (!string.IsNullOrEmpty(ChangeConfirmation))
+    {
+        <div class="full-width"><p id="successful-delete-msg">@ChangeConfirmation</p></div>
+    }
+
+    <div class="customer-section">
+        <h2 class="slightbold">Account Information</h2>
+        <div class="customer-subsection">
+            <div class="cust-info-subsection">
+                <p class="cust-info-title">My Information</p>
+                <div class="customer-info">
+                    <p><span class="bold cust-data-labels">First Name:</span> @Model.FirstName</p>
+                    <p><span class="bold cust-data-labels">Last Name:</span> @Model.LastName</p>
+                    <p><span class="bold cust-data-labels">Email Address:</span> @Model.Email</p>
+                    <p><span class="bold cust-data-labels">Phone:</span> @Model.Phone</p>
+                    <p><span class="bold cust-data-labels">Cell Phone:</span> @Model.CellPhone</p>
+                </div>
+                <div class="cust-info-subsection">
+                    <p><span class="bold cust-data-labels">Street: </span> @Model.Street</p>
+                    <p><span class="bold cust-data-labels">City:</span> @Model.City</p>
+                    <p><span class="bold cust-data-labels">Province:</span> @Model.Province</p>
+                    <p><span class="bold cust-data-labels">Postal Code:</span> @Model.PostalCode</p>
+                </div>
+
+            </div>
+            <div class="cust-info-subsection emergency-info">
+                <p class="cust-info-title">Emergency Contact Information</p>
+                <p><span class="bold cust-data-labels">First Name: </span> @Model.EmergencyContactFirstName</p>
+                <p><span class="bold cust-data-labels">Last Name:</span> @Model.EmergencyContactLastName</p>
+                <p><span class="bold cust-data-labels">Phone:</span> @Model.EmergencyContactPhone</p>
+            </div>
+            <div class="section-icons">
+                <a asp-action="Edit" asp-controller="Customers" asp-route-id="@ClerkCustomerId">
+                    <span class="material-icons edit-icon">
+                        edit
+                    </span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="customer-section">
+        <h2 class="slightbold">Pets</h2>
+        <div class="customer-subsection">
+            @foreach (var Pet in Model.Pets)
+            {
+                <div class="pet-section">
+
+                    <div class="pet-info">
+
+                        <h4>@Pet.Name</h4>
+                        <p>@Pet.Gender</p>
+                        <p>@Pet.Breed</p>
+                    </div>
+
+                    <div class="section-icons">
+                        <a asp-action="Delete" asp-controller="Pets" asp-route-id="@Pet.PetId" class="delete-icon-a">
+                            <span class="material-icons delete-icon">
+                                clear
+                            </span>
+
+                        </a>
+                        <a asp-action="Edit" asp-controller="Pets" asp-route-id="@Pet.PetId" class="edit-icon-a">
+                            <span class="material-icons edit-icon">
+                                edit
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+
+            <div class="section-icons">
+                <a asp-action="Index" asp-controller="Pets">
+                    <span class="material-icons add-icon">
+                        add_circle
+                    </span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="customer-section">
+        <h2 class="slightbold">Upcoming Reservations</h2>
+        <div class="customer-subsection">
+            @{bool hasUpcoming = false;}
+            @foreach (var Pet in Model.Pets)
+            {
+
+
+                @foreach (var Reservation in Pet.PetReservations)
+                {
+                    Reservations.Add(Reservation.Reservation);
+
+                }
+            }
+
+
+            @foreach (var Pet in Model.Pets)
+            {
+
+                @foreach (var PetRes in Pet.PetReservations.OrderBy(x => x.Reservation.StartDate).ThenBy(x => x.Reservation.StartDate))
+                {
+
+                    @if (@PetRes.Reservation.StartDate > DateTime.Now)
+                    {
+                        { hasUpcoming = true; }
+                        if (Reservations.Where(x => x.StartDate == PetRes.Reservation.StartDate && x.EndDate == PetRes.Reservation.EndDate).Any())
+                        {
+                            var MyRes = Reservations.Where(x => x.StartDate == PetRes.Reservation.StartDate && x.EndDate == PetRes.Reservation.EndDate).ToArray();
+                            string PetNames = "";
+
+
+                            Reservations.RemoveAll(x => x.StartDate == PetRes.Reservation.StartDate && x.EndDate == PetRes.Reservation.EndDate);
+                            <div class="reservation-section">
+                                <div class="reservation-info">
+
+                                    <h4>@PetRes.Reservation.StartDate.ToString("yyyy-MM-dd") to @PetRes.Reservation.EndDate.ToString("yyyy-MM-dd")</h4>
+                                    @{
+                                        var petNameList = new List<string>();
+                                        foreach (var pet in Model.Pets.Where(x => x.PetReservations.Any(y => MyRes.Contains(y.Reservation))))
+                                        {
+                                            petNameList.Add(pet.Name);
+                                        }
+                                    }
+
+
+                                    <p>@string.Join(", ", petNameList)</p>
+
+
+
+                                </div>
+                                <br />
+                                <div class="section-icons">
+                                    <a asp-action="Delete" asp-route-id="@PetRes.ReservationId" asp-controller="Reservations">
+                                        <span class="material-icons delete-icon">
+                                            clear
+                                        </span>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@PetRes.ReservationId" asp-controller="Reservations">
+                                        <span class="material-icons edit-icon">
+                                            edit
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                }
+
+            }
+
+            @if (!hasUpcoming)
+            {
+                <p>You Have No Upcoming Reservations!</p>
+            }
+            <div id="book-res-btn-div">
+                <div class="section-icons">
+                 
+                    <a asp-action="Create" asp-controller="Reservations" asp-route-id="@Model.CustomerId" id="bookreservationbtn">
+                        Book Reservation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <a asp-action="PastReservations" asp-controller="Home" asp-route-id="@ClerkCustomerId" class="past-reservations-link">
+            Past Reservation
+        </a>
+ 
+</main>

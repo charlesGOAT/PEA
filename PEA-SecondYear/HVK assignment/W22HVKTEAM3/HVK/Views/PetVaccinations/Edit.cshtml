@@ -1,0 +1,565 @@
+﻿@*@model IEnumerable<HVK.Models.PetVaccination>*@
+    @using System.Security.Claims;
+@{
+    var userIdentity = (ClaimsIdentity)User.Identity;
+    var claims = userIdentity.Claims;
+    var roleClaimType = userIdentity.RoleClaimType;
+    var role = claims.Where(c => c.Type == ClaimTypes.Role).ToList().First();
+    var MyRole = role.Value;
+
+}
+@model PetVaccination_UI
+
+@{
+    ViewData["Title"] = "Edit";
+
+    var ExpiredOrMissing = false;
+    var blankDate = new DateTime(0001, 1, 1);
+
+}
+
+<main>
+    <div class="ManageAccount">
+        <div class="connect">
+            <h2 class="manageReservation slightbold">Manage Vaccination</h2>
+            <h4>@ViewBag.PetName</h4>
+            <h3>Vaccination Information:</h3>
+            <div class="clerk-vacc-table-div">
+                <div class="edit-all-vacc-div">
+
+                </div>
+                <form asp-action="EditAll" asp-controller="petvaccinations">
+                    <div>
+                        <input type="hidden" asp-for="@Model.PetId" />
+                        <p class="change-all-vacc-p"><label asp-for="@Model.ChangeAllDatesDate">Change All Dates:</label> <input type="date" id="change-all-vacc" asp-for="@Model.ChangeAllDatesDate" /> <input type="submit" id="submit-change-all-vacc" value="Save For All" /></p>
+                    </div>
+                </form>
+                <form asp-action="Edit" asp-controller="petvaccinations">
+                    <input type="hidden" asp-for="@Model.Pet" />
+                    <input type="hidden" asp-for="@Model.PetId" />
+                    <input type="hidden" asp-for="@Model.BordetellaVaccine" />
+                    <input type="hidden" asp-for="@Model.HepatitisVaccine" />
+                    <input type="hidden" asp-for="@Model.DistemperVaccine" />
+                    <input type="hidden" asp-for="@Model.ParainfluenzaVaccine" />
+                    <input type="hidden" asp-for="@Model.ParovirusVaccine" />
+                    <input type="hidden" asp-for="@Model.RabiesVaccine" />
+
+
+                    <table class="vacc-table">
+                        <thead>
+                            <tr>
+                                <th class="center">Status</th>
+                                <th class="center">Vaccination Name</th>
+                                <th>Expiry Date</th>
+                                
+                                    <th>Validated</th>
+                                
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr>
+                                @{
+                                    ExpiredOrMissing = false;
+                                }
+                                @if (Model.BordetellaVaccine != null && Model.BordetellaExpiryDate.Value.Date != blankDate)
+                                {
+                                    if (Model.BordetellaExpiryDate < DateTime.Now)
+                                    {
+                                        ExpiredOrMissing = true;
+                                        <td class="expired-vacc"> Expired </td>
+                                    }
+                                    else if (Model.BordetellaVaccine.VaccinationChecked)
+                                    {
+                                        <td class="good">Validated</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="warning">Not Validated</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    ExpiredOrMissing = true;
+                                    <td class="missing-vacc">
+                                        Missing
+
+                                    </td>
+                                }
+                                <td>Bordetella</td>
+                                <td>
+                                    @if (Model.BordetellaVaccine == null)
+                                    {
+                                        <input asp-for="BordetellaExpiryDate" type="date" value=""  />
+                                    }
+                                    else
+                                    {
+
+                                        if (blankDate == Model.BordetellaExpiryDate.Value.Date)
+                                        {
+                                            <input asp-for="BordetellaExpiryDate" type="date" value="" />
+                                        }
+                                        else
+                                        {
+                                        <input asp-for="BordetellaExpiryDate" type="date" value="@(((DateTime)Model.BordetellaExpiryDate).ToString("yyyy-MM-dd"))" />
+                                        }
+                                    }
+                                    <br />
+                                    <span asp-validation-for="BordetellaExpiryDate"></span>
+                                </td>
+
+                                @if (MyRole == "clerk")
+                                {
+                                    <td>
+                                        @if ( Model.BordetellaVaccine.VaccinationChecked && !ExpiredOrMissing)
+                                        {
+                                            
+                                            <input asp-for="@Model.BordetellaVaccine.VaccinationChecked" class="check-box" type="checkbox" value="true" />
+
+
+                                        }
+                                        else
+                                        {
+                                            
+                                            Model.BordetellaVaccine.VaccinationChecked = false;
+
+                                            <input asp-for="@Model.BordetellaVaccine.VaccinationChecked" />
+                                        }
+                                        <input asp-for="@Model.BordetellaVaccine.VaccinationChecked" type="hidden" value="false" />
+                                        
+
+                                        <br />
+
+                                    </td>
+                                }
+                                else
+                                {
+                                   <td>
+                                    <input asp-for="@Model.BordetellaVaccine.VaccinationChecked" value="@Model.BordetellaVaccine.VaccinationChecked" disabled/>
+                              
+                                </td>
+                                    }
+                            </tr>
+                            <tr>
+                                @{
+                                    ExpiredOrMissing = false;
+                                }
+                                @if (Model.DistemperVaccine != null && Model.DistemperExpiryDate.Value.Date != blankDate)
+                                {
+                                    if (Model.DistemperExpiryDate < DateTime.Now)
+                                    {
+                                        ExpiredOrMissing = true;
+                                        <td class="expired-vacc"> Expired </td>
+                                    }
+                                    else if (Model.DistemperVaccine.VaccinationChecked)
+                                    {
+                                        <td class="good">Validated</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="warning">Not Validated</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    ExpiredOrMissing = true;
+                                    <td class="missing-vacc">
+                                        Missing
+
+                                    </td>
+                                }
+                                <td>Distemper</td>
+                                <td>
+                                    @if (Model.DistemperVaccine == null)
+                                    {
+                                        <input asp-for="DistemperExpiryDate" type="date" />
+                                    }
+                                    else
+                                    {
+                            
+
+
+                                        if (blankDate == Model.DistemperExpiryDate.Value.Date)
+                                        {
+                                            <input asp-for="DistemperExpiryDate" type="date" value="" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="DistemperExpiryDate" type="date" value="@(((DateTime)Model.DistemperExpiryDate).ToString("yyyy-MM-dd"))" />
+                                        }
+                                    }
+                                        <br /><span asp-validation-for="DistemperExpiryDate"></span>
+                                    </td>
+                                @if (MyRole == "clerk")
+                                {
+                                    <td>
+                                        @if (Model.DistemperVaccine.VaccinationChecked && !ExpiredOrMissing)
+                                        {
+                                            <input asp-for="@Model.DistemperVaccine.VaccinationChecked" class="check-box" type="checkbox" value="true" />
+
+
+                                        }
+                                        else
+                                        {
+                                            Model.DistemperVaccine.VaccinationChecked = false;
+                                            <input asp-for="@Model.DistemperVaccine.VaccinationChecked" />
+                                        }
+                                        <input asp-for="@Model.DistemperVaccine.VaccinationChecked" type="hidden" value="false" />
+                              
+
+                                        <br />
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <input asp-for="@Model.DistemperVaccine.VaccinationChecked" value="@Model.DistemperVaccine.VaccinationChecked" disabled />
+                                      
+                                    </td>
+                                }
+                            </tr>
+                            <tr>
+                                @{
+                                    ExpiredOrMissing = false;
+                                }
+                                @if (Model.HepatitisVaccine != null && Model.HepatitisExpiryDate.Value.Date != blankDate)
+                                {
+                                    if (Model.HepatitisExpiryDate < DateTime.Now)
+                                    {
+                                        ExpiredOrMissing = true;
+                                        <td class="expired-vacc"> Expired </td>
+                                    }
+                                    else if (Model.HepatitisVaccine.VaccinationChecked)
+                                    {
+                                        <td class="good">Validated</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="warning">Not Validated</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    ExpiredOrMissing = true;
+                                    <td class="missing-vacc">
+                                        Missing
+
+                                    </td>
+                                }
+                                <td>Hepatitis</td>
+                                <td>
+                                    @if (Model.HepatitisVaccine == null)
+                                    {
+                                        <input asp-for="HepatitisExpiryDate" type="date" />
+                                    }
+                                    else
+                                    {
+                                        if (blankDate == Model.HepatitisExpiryDate.Value.Date)
+                                        {
+                                            <input asp-for="HepatitisExpiryDate" type="date" value="" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="HepatitisExpiryDate" type="date" value="@(((DateTime)Model.HepatitisExpiryDate).ToString("yyyy-MM-dd"))" />
+                                        }
+                                    }
+                                        <br />
+                                        <span asp-validation-for="HepatitisExpiryDate"></span>
+                                    </td>
+
+                                @if (MyRole == "clerk")
+                                {
+                                    <td>
+                                        @if (Model.HepatitisVaccine.VaccinationChecked && !ExpiredOrMissing)
+                                        {
+                                            <input asp-for="@Model.HepatitisVaccine.VaccinationChecked" class="check-box" type="checkbox" value="true" />
+
+
+                                        }
+                                        else
+                                        {
+                                            Model.HepatitisVaccine.VaccinationChecked = false;
+                                            <input asp-for="@Model.HepatitisVaccine.VaccinationChecked" />
+                                        }
+
+                                        <input asp-for="@Model.HepatitisVaccine.VaccinationChecked" type="hidden" value="false" />
+                            
+                                    </td>
+                                        <br />
+
+                                    
+                                    }
+                                    else
+                                    {<td>
+                                    <input asp-for="@Model.HepatitisVaccine.VaccinationChecked" value="@Model.HepatitisVaccine.VaccinationChecked" disabled />
+                    
+                                </td>    
+                                }
+                                </tr>
+                            <tr>
+                                @{
+                                    ExpiredOrMissing = false;
+                                }
+                                @if (Model.ParainfluenzaVaccine != null && Model.ParainfluenzaExpiryDate.Value.Date != blankDate)
+                                {
+                                    if (Model.ParainfluenzaExpiryDate < DateTime.Now)
+                                    {
+                                        ExpiredOrMissing = true;
+                                        <td class="expired-vacc"> Expired </td>
+                                    }
+                                    else if (Model.ParainfluenzaVaccine.VaccinationChecked)
+                                    {
+                                        <td class="good">Validated</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="warning">Not Validated</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    ExpiredOrMissing = true;
+                                    <td class="missing-vacc">
+                                        Missing
+
+                                    </td>
+                                }
+                                <td>Parainfluenza</td>
+                                <td>
+                                    @if (Model.ParainfluenzaVaccine == null)
+                                    {
+                                        <input asp-for="ParainfluenzaExpiryDate" type="date" />
+                                    }
+                                    else
+                                    {
+                                        if (blankDate == Model.ParainfluenzaExpiryDate.Value.Date)
+                                        {
+                                            <input asp-for="ParainfluenzaExpiryDate" type="date" value="" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="ParainfluenzaExpiryDate" type="date" value="@(((DateTime)Model.ParainfluenzaExpiryDate).ToString("yyyy-MM-dd"))" />
+                                        }
+                                    }
+                                        <br />
+                                        <span asp-validation-for="ParainfluenzaExpiryDate"></span>
+                                    </td>
+
+                                @if (MyRole == "clerk")
+                                {
+                                    <td>
+                                        @if (Model.ParainfluenzaVaccine.VaccinationChecked && !ExpiredOrMissing)
+                                        {
+                                            <input asp-for="@Model.ParainfluenzaVaccine.VaccinationChecked" class="check-box" type="checkbox" value="true" />
+
+
+                                        }
+                                        else
+                                        {
+                                            Model.ParainfluenzaVaccine.VaccinationChecked = false;
+                                            <input asp-for="@Model.ParainfluenzaVaccine.VaccinationChecked" />
+                                        }
+                                        <input asp-for="@Model.ParainfluenzaVaccine.VaccinationChecked" type="hidden" value="false" />
+        
+
+                                        <br />
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <input asp-for="@Model.ParainfluenzaVaccine.VaccinationChecked" value="@Model.ParainfluenzaVaccine.VaccinationChecked" disabled />
+                                
+                                    </td>
+                                        }
+                                </tr>
+                            <tr>
+                                @{
+                                    ExpiredOrMissing = false;
+                                }
+                                @if (Model.ParovirusVaccine != null && Model.ParovirusExpiryDate.Value.Date != blankDate)
+                                {
+                                    if (Model.ParovirusExpiryDate < DateTime.Now)
+                                    {
+                                        ExpiredOrMissing = true;
+                                        <td class="expired-vacc"> Expired </td>
+                                    }
+                                    else if (Model.ParovirusVaccine.VaccinationChecked)
+                                    {
+                                        <td class="good">Validated</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="warning">Not Validated</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    ExpiredOrMissing = true;
+                                    <td class="missing-vacc">
+                                        Missing
+
+                                    </td>
+                                }
+                                <td>Parovirus</td>
+                                <td>
+                                    @if (Model.ParovirusVaccine == null)
+                                    {
+                                        <input asp-for="ParovirusExpiryDate" type="date" />
+                                    }
+                                    else
+                                    {
+                                        if (blankDate == Model.ParovirusExpiryDate.Value.Date)
+                                        {
+                                            <input asp-for="ParovirusExpiryDate" type="date" value="" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="ParovirusExpiryDate" type="date" value="@(((DateTime)Model.ParovirusExpiryDate).ToString("yyyy-MM-dd"))" />
+                                        }
+                                    }
+                                        <br />
+                                        <span asp-validation-for="ParovirusExpiryDate"></span>
+                                    </td>
+                                @if (MyRole == "clerk")
+                                {
+                                    <td>
+                                        @if (Model.ParovirusVaccine.VaccinationChecked && !ExpiredOrMissing)
+                                        {
+                                            <input asp-for="@Model.ParovirusVaccine.VaccinationChecked" class="check-box" type="checkbox" value="true" />
+
+
+                                        }
+                                        else
+                                        {
+                                            Model.ParovirusVaccine.VaccinationChecked = false;
+                                            <input asp-for="@Model.ParovirusVaccine.VaccinationChecked" />
+                                        }
+                                        <input asp-for="@Model.ParovirusVaccine.VaccinationChecked" type="hidden" value="false" />
+                                  
+
+                                        <br />
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <input asp-for="@Model.ParovirusVaccine.VaccinationChecked" value="@Model.ParovirusVaccine.VaccinationChecked" disabled />
+                                  
+                                    </td>
+                                        }
+                                </tr>
+                            <tr>
+                                @{
+                                    ExpiredOrMissing = false;
+                                }
+                                @if (Model.RabiesVaccine != null && Model.RabiesExpiryDate.Value.Date != blankDate)
+                                {
+                                    if (Model.RabiesExpiryDate < DateTime.Now)
+                                    {
+                                        ExpiredOrMissing = true;
+                                        <td class="expired-vacc"> Expired </td>
+                                    }
+                                    else if (Model.RabiesVaccine.VaccinationChecked)
+                                    {
+                                        <td class="good">Validated</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="warning">Not Validated</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    ExpiredOrMissing = true;
+                                    <td class="missing-vacc">
+                                        Missing
+
+                                    </td>
+                                }
+                                <td>Rabies</td>
+                                <td>
+                                    @if (Model.RabiesVaccine == null)
+                                    {
+                                        <input asp-for="RabiesExpiryDate" type="date" />
+                                    }
+                                    else
+                                    {
+                                        if (blankDate == Model.RabiesExpiryDate.Value.Date)
+                                        {
+                                            <input asp-for="RabiesExpiryDate" type="date" value="" />
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="RabiesExpiryDate" type="date" value="@(((DateTime)Model.RabiesExpiryDate).ToString("yyyy-MM-dd"))" />
+                                        }
+                                    }
+                                        <br />
+                                        <span asp-validation-for="RabiesExpiryDate"></span>
+                                    </td>
+                                @if (MyRole == "clerk")
+                                {
+                                    <td>
+                                        @if (Model.RabiesVaccine.VaccinationChecked && !ExpiredOrMissing)
+                                        {
+                                            <input asp-for="@Model.RabiesVaccine.VaccinationChecked" class="check-box" type="checkbox" value="true" />
+
+
+                                        }
+                                        else
+                                        {
+                                            Model.RabiesVaccine.VaccinationChecked = false;
+                                            <input asp-for="@Model.RabiesVaccine.VaccinationChecked" />
+                                        }
+                                        <input asp-for="@Model.RabiesVaccine.VaccinationChecked" type="hidden" value="false" />
+                                   
+
+                                        <br />
+
+                                    </td>
+                                }
+                                else
+                                {
+                            <td>
+                                <input asp-for="@Model.RabiesVaccine.VaccinationChecked" value="@Model.RabiesVaccine.VaccinationChecked" disabled />
+                                
+                            </td>
+                                }
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <br />
+                    <div class="contain">
+                        <div class="btn link manage-vacc-div">
+                            <input type="submit" id="edit-vacc-btn" value="Save Changes">
+                        
+                    @if(MyRole == "user"){
+                    <a asp-action="Index" asp-controller="Home">Back</a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="Clerk">Back</a>
+                }
+            </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</main>

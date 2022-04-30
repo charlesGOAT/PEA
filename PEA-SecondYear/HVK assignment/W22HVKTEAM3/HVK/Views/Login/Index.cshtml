@@ -1,0 +1,46 @@
+﻿@model HVK.Models.Login;
+@{
+    Layout = "_Login";
+    string ErrMsg = "";
+    if (TempData.Peek("CustNotFound") != null)
+    {
+        ErrMsg = TempData["CustNotFound"].ToString() ?? "";
+    }
+    string AccountDelConfirmation = "";
+    if (TempData.Peek("CustDeleted") != null)
+    {
+        AccountDelConfirmation = TempData["CustDeleted"].ToString() ?? "";
+    }
+
+}
+<div class="full-width"><p id="successful-delete-msg">@AccountDelConfirmation</p></div>
+<div class="loginForm">
+    <div class="connect">
+        <form id="usernameForm" asp-action="Index" asp-controller="Login">
+            <h2 class="signIn">Sign in</h2>
+            <div class="phoneOrEmail"><span>*</span>Enter Email or phone</div><br />
+            <span asp-validation-for="Email">@ErrMsg</span>
+
+
+            <label asp-for="Email" class="signInLabelEmail form-label">
+                Email
+            </label> <input asp-for="Email" class="userfield form-control" placeholder="Enter Email">
+            <br />
+            <label asp-for="Phone" class="signInLabelEmail form-label">
+                Phone
+            </label>
+            <input asp-for="Phone" class="userfield form-control" placeholder="Enter Phone">
+            <span asp-validation-for="Phone"></span>
+            <br />
+            <label asp-for="Password" class="signInLabelPassword form-label">
+                Password
+
+            </label><input type="password" asp-for="Password" class="userfield  form-control" placeholder="Enter Password" />
+            <span asp-validation-for="Password"></span>
+            <br />
+            <input type="submit" class="loginbutton" value="Log In">
+            <hr>
+            <div class="noAccount">@Html.ActionLink("Create new account", "Index", "Customers")</div>
+        </form>
+    </div>
+</div>
