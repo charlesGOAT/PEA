@@ -1,5 +1,5 @@
 # PEA-SecondYear
-In this folder, I put in my best work from year one of my computer science journey in Heritage college, and also essays I did describing what I've learned this year.
+In this folder, I put in my best work from year one of my computer science journey in Heritage college, and also reflections I did describing what I've learned this year.
 
 <h3>Assignments:</h3> 
 
